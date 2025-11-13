@@ -11,9 +11,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <!-- Styles -->
   <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    /* --- Overrides for header stickiness & back-to-top button --- */
+    body{ padding-top:60px; }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+    /* Back-to-top floating arrow */
+    .backtotop{ position:fixed; right:16px; bottom:16px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:rgba(44,44,44,.75); color:#fff; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.4); opacity:.85; transition:opacity .2s, transform .2s; }
+    .backtotop:hover{ opacity:1; transform:translateY(-2px); }
+    .backtotop.show{ display:flex; }
+    .backtotop svg{ width:18px; height:18px; }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#profile">跳到主要內容</a>
+  
 
   <!-- Header / Nav -->
   <header class="header">
@@ -32,6 +42,10 @@
       </nav>
     </div>
   </header>
+
+  <button id="backToTop" class="backtotop" aria-label="回到頂端">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
   <main>
     <!-- Hero / Profile (full height like music player) -->
@@ -141,7 +155,23 @@
   <!-- Scripts -->
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
   <script src="JudyChaoPortfolio.js" defer></script>
+  <!-- Back-to-top logic (inline so不需改動外部 JS) -->
+  <script>
+    (function(){
+      var btn = document.getElementById('backToTop');
+      if(!btn) return;
+      var showAt = 200;
+      function onScroll(){
+        if(window.scrollY > showAt){ btn.classList.add('show'); }
+        else { btn.classList.remove('show'); }
+      }
+      window.addEventListener('scroll', onScroll, { passive:true });
+      onScroll();
+      btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    })();
+  </script>
 </body>
 </html>
+
   
 
