@@ -121,7 +121,7 @@
     height: 34px;
     border-radius: 999px;
     border: 0px solid rgba(203, 208, 216, 0.85);
-    background:rgba(51, 61, 81, 0.96);
+    background:rgba(44,44,44,0.75);
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -373,12 +373,6 @@
     font-size: 26px;
   }
 }
-
-
-  
-
-  
-
  
   /* ===============================
      Avatar（About）
