@@ -314,39 +314,29 @@
 
 /* 手機版：改用背景圖滿版顯示，直向完全填滿，橫向可裁切 */
 @media (max-width: 600px) {
-  /* 1. 用背景圖來顯示照片（直向填滿） */
   .home-hero {
     min-height: 100vh;
     height: 100vh;
-    background-image: url('000035500019拷貝2.jpg'); /* ← 跟你的檔名保持一樣 */
-    background-size: cover;      /* 🔥 直向填滿，橫向裁切 */
+    background-image: url('000035500019拷貝2.jpg');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  /* 2. 手機上就不顯示 <img>，避免重複 */
   .home-hero-img {
     display: none;
   }
 
   .home-tabs {
-    display: grid;                             /* 改用 grid */
-    grid-template-columns: repeat(3, auto);    /* 一排最多三個 */
-    justify-content: center;                   /* 整體置中 */
-    justify-items: center;                     /* 每個字自己也置中 */
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    justify-items: center;
     row-gap: 10px;
     column-gap: 18px;
   }
-  /* 手機版：overlay 跟著圖片走，避免滑動時穿幫 */
 
-  .home-hero-overlay {
-    position: absolute; /* ← 覆蓋掉 fixed，跟 section 高度一起動 */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-  /* 讓第 4、5 個（Resume, Contact）排在第 2、3 欄 → 第二排看起來置中 */
+  /* ⭐ 這兩個新加的 */
   .home-tabs a:nth-child(4) {
     grid-column: 2;
   }
@@ -354,7 +344,16 @@
   .home-tabs a:nth-child(5) {
     grid-column: 3;
   }
+
+  .home-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
+
  
   /* ===============================
      Avatar（About）
