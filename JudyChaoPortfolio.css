@@ -727,3 +727,29 @@
     grid-column: 2;
   }
 }
+/* Two-column independent timelines - desktop */
+@media (min-width: 900px) {
+
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 60px;
+    align-items: start;        /* ← 兩欄頂端對齊 */
+  }
+
+  .timeline-col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;                 /* 每個 item 的間距 */
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 26px;
+    border-left: 2px solid var(--grey);
+  }
+
+  .timeline-marker {
+    left: -10px;
+  }
+}
