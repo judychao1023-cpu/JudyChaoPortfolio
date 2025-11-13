@@ -685,37 +685,6 @@
   
   }
 
-  /* ===============================
-   Mobile — Single Column
-   =============================== */
-.timeline {
-  position: relative;
-  margin-top: 20px;
-  padding-left: 26px;
-  border-left: 2px solid var(--grey);   /* 手機單欄線 */
-}
-
-.timeline-item {
-  position: relative;
-  padding-bottom: 28px;
-}
-
-.timeline-item:last-child {
-  padding-bottom: 0;
-}
-
-/* Marker（手機版貼左線） */
-.timeline-marker {
-  position: absolute;
-  top: 4px;
-  left: -11px;                           /* 緊貼 2px 線 */
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--gold);
-  border: 2px solid #fff;
-  box-shadow: 0 0 0 2px rgba(203,208,216,0.7);
-}
 /* ===============================
    Mobile — Single Column
    =============================== */
@@ -739,7 +708,7 @@
   .timeline-marker {
     position: absolute;
     top: 4px;
-    left: -81px;                           /* 緊貼 2px 線 */
+    left: -11px;                           /* 緊貼 2px 線 */
     width: 14px;
     height: 14px;
     border-radius: 50%;
