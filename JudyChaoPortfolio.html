@@ -1,50 +1,147 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/68947fbd88.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="JudyChaoPortfolio.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Portfolio</title>
+  <meta name="description" content="Judy Chao (趙子寧) — Communication · Business Minor · Photography & Media Projects" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
 </head>
 <body>
-<div id="songplayer">
-    <div class="cover">
-<div class="wrapper"> 
-    <div class="details">
-        <div class="albumcover"></div>
-        <div class="nowplaying"></div>
-        <div class="artist"></p>
-    </div>  
+  <a class="skip-link" href="#profile">跳到主要內容</a>
 
-    <div class="songcontrols">
-        <div class="button">
-            <div class="prev">
-                <i class="fa-solid fa-backward fa-2x" style="color: white;" onclick="previousSong()"></i>
-            </div>
-            <div class="playpause">
-                <i class="fa-solid fa-play-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            </div>
-            <div class="next">
-                <i class="fa-solid fa-forward fa-2x" style="color: white;" onclick="nextSong()"></i>
-            </div> 
-        </div>   
-    <div class="repeatbtn">
-        <div class="repeat">
-        <i class="fa-solid fa-repeat" style="color: white;" onclick="loadSong()"></i>
+  <!-- Header / Nav -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#profile">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+      <nav class="nav__links" aria-label="主要導覽">
+        <a class="nav__link" href="#profile">Home</a>
+        <a class="nav__link" href="#about">About</a>
+        <a class="nav__link" href="#projects">Projects</a>
+        <a class="nav__link" href="#gallery">Gallery</a>
+        <a class="nav__link" href="#resume">Resume</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
     </div>
-    </div>     
-    </div>
-</div>
-</div>
+  </header>
 
-<script src="JudyChaoPortfolio.js"></script>
+  <main>
+    <!-- Hero / Profile (full height like music player) -->
+    <section id="profile" data-bg="images/hero-bg.jpg" role="banner">
+      <div class="cover">
+        <div class="wrapper">
+          <div class="details">
+            <div class="avatar">
+              <img src="images/judy.jpg" alt="Judy Chao portrait" />
+            </div>
+            <h1 class="name">Judy Chao · 趙子寧</h1>
+            <p class="title">Communication (CAE) · Business Minor · Photography & Media</p>
+            <div class="buttons">
+              <button class="btn" data-action="resume" data-url="趙子寧2025履歷英.pdf">Resume (EN)</button>
+              <button class="btn" data-action="resume" data-url="趙子寧2025履歷中.pdf">履歷（中）</button>
+              <button class="btn" data-action="contact">Contact</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <p class="prose">
+          I’m Judy (Tzu‑Ning Chao), a Communication major (CAE) with a Business minor at The Ohio State University.
+          I bridge media, storytelling, and operations with a focus on photography, journalism, and entertainment industry workflows.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects">
+          <article class="project-card reveal">
+            <img src="images/project-1.jpg" alt="Project cover 1" />
+            <h3>Campus Feature Photo Story</h3>
+            <p class="muted">Photojournalism · 2025</p>
+          </article>
+          <article class="project-card reveal">
+            <img src="images/project-2.jpg" alt="Project cover 2" />
+            <h3>Operations & Lean Mini‑Case</h3>
+            <p class="muted">Coursework · BUSOBA 3130</p>
+          </article>
+          <article class="project-card reveal">
+            <img src="images/project-3.jpg" alt="Project cover 3" />
+            <h3>COMM 2367 Persuasive PSA</h3>
+            <p class="muted">Health Communication · 2025</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <h2>Gallery</h2>
+        <div class="gallery">
+          <figure class="gallery__item reveal"><img src="images/g1.jpg" alt="Gallery image 1" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g2.jpg" alt="Gallery image 2" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g3.jpg" alt="Gallery image 3" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g4.jpg" alt="Gallery image 4" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g5.jpg" alt="Gallery image 5" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g6.jpg" alt="Gallery image 6" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume / Timeline -->
+    <section id="resume" class="section">
+      <div class="container">
+        <h2>Resume Highlights</h2>
+        <div class="projects" style="justify-content:center; margin-top:10px;">
+          <a class="btn" href="趙子寧2025履歷英.pdf" target="_blank" rel="noopener">Open Resume (EN)</a>
+          <a class="btn" href="趙子寧2025履歷中.pdf" target="_blank" rel="noopener">開啟履歷（中）</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <form id="contactForm" class="form" autocomplete="off">
+          <input id="contactName" class="input" type="text" placeholder="Your name" aria-label="Your name" />
+          <input id="contactEmail" class="input" type="email" placeholder="Email" aria-label="Email" />
+          <textarea id="contactMsg" class="textarea" placeholder="Message" aria-label="Message"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Judy Chao · All rights reserved
+    </div>
+  </footer>
+
+  <noscript>本頁面需要啟用 JavaScript 以獲得完整體驗。</noscript>
+
+  <!-- Scripts -->
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script src="JudyChaoPortfolio.js" defer></script>
 </body>
 </html>
-
   
 

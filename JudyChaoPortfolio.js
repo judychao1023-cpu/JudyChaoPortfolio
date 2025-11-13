@@ -1,479 +1,252 @@
-const song1= new Audio ('Us,Again.mp3')
-const song2= new Audio ('Event Horizon.mp3')
-const song3= new Audio ('SpringDay.mp3')
+// =============================================
+// Judy Chao — Portfolio JS (imperative style)
+// Matches your music-player code style: simple globals,
+// direct DOM updates, minimal abstractions.
+// File: JudyChaoPortfolio.js
+// =============================================
 
+// ---------- Global state ----------
+let headerShrunk = false
 
-// global variables
-let songPlaying = false
-let currentTrack = 1
+// ---------- Helpers (minimal) ----------
+function $(sel, el){ return (el||document).querySelector(sel) }
+function $all(sel, el){ return Array.from((el||document).querySelectorAll(sel)) }
 
-function playpauseSong(){
-    if (currentTrack === 1) {
-        if (songPlaying === false) {
-            // play song
-            console.log('song1 playing...')
-            song1.play()
-            // change songPlaying to true
-            songPlaying = true
-            // change btn
-            document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-            document.querySelector('.albumcover').innerHTML = `
-            <img src="usagain.png"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Us, again
-        `
-        document.querySelector('.artist').innerHTML = `
-            Seventeen
-        `
-        var url ="usagain.png"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        
-
-
-
-        } else if (songPlaying === true) {
-            // pause song
-            console.log('song1 paused...')
-            song1.pause()
-            // change songPlaying to false
-            songPlaying = false
-            // change btn
-            document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-play-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-            document.querySelector('.albumcover').innerHTML = `
-            <img src="usagain.png"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Us, again
-        `
-        document.querySelector('.artist').innerHTML = `
-            Seventeen
-        `
-        var url ="usagain.png"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        }
-    }    
-    if (currentTrack === 2) {
-        if (songPlaying === true) {
-            // pause song
-            console.log('song2 paused...')
-            song2.pause()
-            // change songPlaying to false
-            songPlaying = false
-            // change btn
-            document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-play-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-            document.querySelector('.albumcover').innerHTML = `
-            <img src="eventhorizon.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Event Horizon
-        `
-        document.querySelector('.artist').innerHTML = `
-        Younha
-        `
-        var url ="eventhorizon.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        } else if (songPlaying === false) {
-            // play song
-            console.log('song2 playing...')
-            song2.play()
-            // change songPlaying to true
-            songPlaying = true
-            // change btn
-            document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-            document.querySelector('.albumcover').innerHTML = `
-            <img src="eventhorizon.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Event Horizon
-        `
-        document.querySelector('.artist').innerHTML = `
-        Younha
-        `
-        var url ="eventhorizon.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        }
-    }    
-    if (currentTrack === 3) {
-        if (songPlaying === true) {
-            // pause song
-            console.log('song3 paused...')
-            song3.pause()
-            // change songPlaying to false
-            songPlaying = false
-            // change btn
-            document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-play-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-            document.querySelector('.albumcover').innerHTML = `
-            <img src="springday.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Spring Day
-        `
-        document.querySelector('.artist').innerHTML = `
-        BTS
-        `
-        var url ="springday.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        } else if (songPlaying === false) {
-            // play song
-            console.log('song3 playing...')
-            song3.play()
-            // change songPlaying to true
-            songPlaying = true
-            // change btn
-            document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-            document.querySelector('.albumcover').innerHTML = `
-            <img src="springday.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Spring Day
-        `
-        document.querySelector('.artist').innerHTML = `
-        BTS
-        `
-        var url ="springday.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        }
-    }    
+// ---------- 1) Hero 背景（與 #songplayer 類似寫法） ----------
+function setHeroBackground(){
+  const hero = $('#profile')
+  if(!hero) return
+  const url = hero.getAttribute('data-bg')
+  if(url){ hero.style.backgroundImage = `url(${url})` }
 }
 
-function nextSong() {
-    if (currentTrack ===3){
-        console.log('playing song1...')
-        song1.load()
-        song3.pause()
-        song1.play()
-        document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-        document.querySelector('.albumcover').innerHTML = `
-            <img src="usagain.png"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Us, again
-        `
-        document.querySelector('.artist').innerHTML = `
-            Seventeen
-        `
+// ---------- 2) 平滑卷動（簡化版） ----------
+function bindSmoothScroll(){
+  const links = $all('a[href^="#"]')
+  links.forEach(link=>{
+    link.addEventListener('click', function(e){
+      const hash = link.getAttribute('href')
+      if(!hash || hash.length<=1) return
+      const target = $(hash)
+      if(!target) return
+      e.preventDefault()
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      history.pushState(null, '', hash)
+    })
+  })
+}
 
-        var url ="usagain.png"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        currentTrack = 1
-    } else{
-        currentTrack++
+// ---------- 3) 導航高亮（與你的 if/else 範式一致） ----------
+function setActiveNav(){
+  const navLinks = $all('.nav__link[href^="#"], a[href^="#"][data-nav]')
+  if(navLinks.length===0) return
+
+  const sections = navLinks
+    .map(a => $(a.getAttribute('href')))
+    .filter(Boolean)
+
+  const io = new IntersectionObserver(function(entries){
+    for(const entry of entries){
+      if(entry.isIntersecting === true){
+        const id = '#' + entry.target.id
+        navLinks.forEach(a=>{
+          if(a.getAttribute('href') === id){ a.classList.add('is-active') }
+          else { a.classList.remove('is-active') }
+        })
+      }
     }
-    // show the track
-    if (currentTrack === 2) {
-        console.log('playing song2...')
-        song2.load()
-        song1.pause()
-        song2.play()
-        document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-        document.querySelector('.albumcover').innerHTML = `
-            <img src="eventhorizon.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Event Horizon
-        `
-        document.querySelector('.artist').innerHTML = `
-            Younha
-        `
-        var url ="eventhorizon.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        
-    }
-    else if (currentTrack === 3) {
-        console.log('playing song3...')
-       song3.load()
-        song2.pause()
-        song3.play()
-        document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-        document.querySelector('.albumcover').innerHTML = `
-            <img src="springday.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Spring Day
-        `
-        document.querySelector('.artist').innerHTML = `
-            BTS
-        `
-        var url ="springday.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-    }
-    }
-    // if current track is 3
-    // change track to 1
-    // else
-    // change track to + 1
-    
+  }, { root: null, rootMargin: '0px 0px -60% 0px', threshold: 0 })
 
+  sections.forEach(sec=> io.observe(sec))
+}
 
-function previousSong() {
-    if (currentTrack===1){
-        console.log('playing song3...')
-    song3.load()
-    song1.pause()
-    song3.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="springday.jpeg"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Spring Day
-    `
-    document.querySelector('.artist').innerHTML = `
-        BTS
-    `
-    var url ="springday.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-    
-        currentTrack=3
-    } else{
-        currentTrack--
+// ---------- 4) Avatar lazy + 淡入（簡潔） ----------
+function initAvatar(){
+  const img = $('.avatar img')
+  if(!img) return
+  img.style.opacity = '0'
+  img.style.transition = 'opacity .4s ease'
+  img.loading = 'lazy'
+  img.addEventListener('load', function(){ img.style.opacity = '1' })
+}
+
+// ---------- 5) 小型提示（toast） ----------
+let _toastTimer = null
+function showToast(msg){
+  let el = $('#_toast')
+  if(!el){
+    el = document.createElement('div')
+    el.id = '_toast'
+    el.style.position = 'fixed'
+    el.style.right = '16px'
+    el.style.bottom = '16px'
+    el.style.zIndex = '999'
+    el.style.padding = '10px 12px'
+    el.style.borderRadius = '10px'
+    el.style.background = 'rgba(44,44,44,0.9)'
+    el.style.color = 'white'
+    el.style.boxShadow = '0 4px 10px rgba(0,0,0,.4)'
+    el.style.fontSize = '14px'
+    el.style.transition = 'opacity .2s'
+    el.style.opacity = '0'
+    document.body.appendChild(el)
+  }
+  el.textContent = msg
+  requestAnimationFrame(()=>{ el.style.opacity = '1' })
+  clearTimeout(_toastTimer)
+  _toastTimer = setTimeout(()=>{ el.style.opacity = '0' }, 1800)
+}
+
+// ---------- 6) Buttons（採用 data-action 與 if/else 判斷） ----------
+function bindButtons(){
+  const area = $('.buttons') || document
+  area.addEventListener('click', function(e){
+    const btn = e.target.closest('[data-action]')
+    if(!btn) return
+    const action = btn.getAttribute('data-action')
+
+    if(action === 'contact'){
+      const target = $('#contact') || $('[data-section="contact"]')
+      if(target){ target.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
     }
-    if (currentTrack === 2) {
-    console.log('playing song2...')
-    song2.load()
-    song3.pause()
-    song2.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="eventhorizon.jpeg"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Event Horizon
-    `
-    document.querySelector('.artist').innerHTML = `
-        Younha
-    `
-    var url ="eventhorizon.jpeg"
-    var div = document.getElementById("songplayer");
-    div.style.backgroundImage = `url(${url})`;
-}
-else if(currentTrack === 1) {
-    console.log('playing song1...')
-    song1.load()
-    song2.pause()
-    song1.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="usagain.png"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Us, again
-    `
-    document.querySelector('.artist').innerHTML = `
-        Seventeen
-    ` 
-    var url ="usagain.png"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        
-}
-}
-function loadSong(){
-    if (currentTrack === 1) {
-        console.log('playing song1...')
-        song1.load()
-        song1.play()
-        document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-        document.querySelector('.albumcover').innerHTML = `
-            <img src="usagain.png"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Us, again
-        `
-        document.querySelector('.artist').innerHTML = `
-            Seventeen
-        `
-        var url ="usagain.png"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        
-        
+    else if(action === 'resume'){
+      const directUrl = btn.getAttribute('data-url')
+      if(directUrl){
+        window.open(directUrl, '_blank', 'noopener')
+      } else {
+        // 沒有 data-url -> 快速選語言（OK=EN / Cancel=中文）
+        const ok = confirm('Open which version?\nOK = English\nCancel = 中文')
+        const url = ok ? '趙子寧2025履歷英.pdf' : '趙子寧2025履歷中.pdf'
+        window.open(url, '_blank', 'noopener')
+      }
     }
-    else if (currentTrack === 2) {
-        console.log('playing song2...')
-        song2.load()
-        song2.play()
-        document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-        document.querySelector('.albumcover').innerHTML = `
-            <img src="eventhorizon.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Event Horizon
-        `
-        document.querySelector('.artist').innerHTML = `
-            Younha
-        `
-        var url ="eventhorizon.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        
+    else if(action === 'email'){
+      const mail = btn.getAttribute('data-email') || 'hello@example.com'
+      window.location.href = 'mailto:' + mail
     }
-    else if (currentTrack === 3) {
-        console.log('playing song3...')
-        song3.load()
-        song3.play()
-        document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-        document.querySelector('.albumcover').innerHTML = `
-            <img src="springday.jpeg"/>
-        `
-        document.querySelector('.nowplaying').innerHTML = `
-            Spring Day
-        `
-        document.querySelector('.artist').innerHTML = `
-            BTS
-        `
-        var url ="springday.jpeg"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
+    else if(action === 'link'){
+      const url = btn.getAttribute('data-url')
+      if(url){ window.open(url, '_blank', 'noopener') }
     }
+  })
 }
-song1.onended=function(){
-    console.log('playing song2...')
-    song2.load()
-    song3.pause()
-    song2.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="eventhorizon.jpeg"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Event Horizon
-    `
-    document.querySelector('.artist').innerHTML = `
-        Younha
-    `
-    var url ="eventhorizon.jpeg"
-    var div = document.getElementById("songplayer");
-    div.style.backgroundImage = `url(${url})`;
-    currentTrack=2
+
+// ---------- 7) Project 圖片燈箱（簡易 <dialog>） ----------
+function bindLightbox(){
+  const imgs = $all('.project-card img')
+  if(imgs.length===0 || !('HTMLDialogElement' in window)) return
+
+  const dlg = document.createElement('dialog')
+  dlg.setAttribute('aria-label', 'Image preview')
+  dlg.style.padding = '0'
+  dlg.style.border = 'none'
+  dlg.style.background = 'transparent'
+  dlg.innerHTML = `
+    <div style="position:fixed; inset:0; background:rgba(0,0,0,.8); display:flex; align-items:center; justify-content:center;">
+      <img id="_lb_img" alt="preview" style="max-width:92vw; max-height:86vh; border-radius:10px; box-shadow:0 10px 28px rgba(0,0,0,.6)" />
+    </div>`
+  document.body.appendChild(dlg)
+
+  const imgEl = $('#_lb_img', dlg)
+  imgs.forEach(function(img){
+    img.style.cursor = 'zoom-in'
+    img.addEventListener('click', function(){
+      imgEl.src = img.currentSrc || img.src
+      if(!dlg.open) dlg.showModal()
+    })
+  })
+
+  dlg.addEventListener('click', function(){ dlg.close() })
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && dlg.open) dlg.close() })
 }
-song1.onended=function(){
-    console.log('playing song2...')
-    song2.load()
-    song3.pause()
-    song2.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="eventhorizon.jpeg"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Event Horizon
-    `
-    document.querySelector('.artist').innerHTML = `
-        Younha
-    `
-    var url ="eventhorizon.jpeg"
-    var div = document.getElementById("songplayer");
-    div.style.backgroundImage = `url(${url})`;
-    currentTrack=2
+
+// ---------- 8) Scroll reveal（與你 if/else 邏輯一致） ----------
+function bindReveal(){
+  const els = $all('.reveal')
+  if(els.length===0) return
+
+  const prefersReduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+  if(prefersReduced === true) return
+
+  els.forEach(function(el){
+    el.style.opacity = '0'
+    el.style.transform = 'translateY(8px)'
+    el.style.transition = 'opacity .5s ease, transform .5s ease'
+  })
+
+  const io = new IntersectionObserver(function(entries){
+    for(const e of entries){
+      if(e.isIntersecting === true){
+        e.target.style.opacity = '1'
+        e.target.style.transform = 'translateY(0)'
+        io.unobserve(e.target)
+      }
+    }
+  }, { threshold: 0.15 })
+
+  els.forEach(el=> io.observe(el))
 }
-song1.onended=function(){
-    console.log('playing song2...')
-    song2.load()
-    song3.pause()
-    song2.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="eventhorizon.jpeg"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Event Horizon
-    `
-    document.querySelector('.artist').innerHTML = `
-        Younha
-    `
-    var url ="eventhorizon.jpeg"
-    var div = document.getElementById("songplayer");
-    div.style.backgroundImage = `url(${url})`;
-    currentTrack=2
+
+// ---------- 9) Contact 表單（小型處理） ----------
+function bindContactForm(){
+  const form = $('#contactForm')
+  if(!form) return
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault()
+    const name = $('#contactName')?.value?.trim()
+    const email = $('#contactEmail')?.value?.trim()
+    const msg = $('#contactMsg')?.value?.trim()
+
+    if(!name || !email || !msg){
+      showToast('請填寫完整資訊')
+    } else {
+      showToast('已收到！我會盡快回覆你')
+      form.reset()
+    }
+  })
 }
-song2.onended=function(){
-    console.log('playing song3...')
-    song3.load()
-    song3.play()
-    document.querySelector('.playpause').innerHTML = `
-        <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-        `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="springday.jpeg"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Spring Day
-    `
-    document.querySelector('.artist').innerHTML = `
-        BTS
-    `
-    var url ="springday.jpeg"
-    var div = document.getElementById("songplayer");
-    div.style.backgroundImage = `url(${url})`;
+
+// ---------- 10) Header 微縮（if / else） ----------
+function handleHeaderOnScroll(){
+  const header = $('.header')
+  if(!header) return
+
+  function onScroll(){
+    const y = window.scrollY
+    if(y > 6 && headerShrunk === false){
+      header.style.backdropFilter = 'blur(10px)'
+      header.style.background = 'rgba(17,17,22,0.82)'
+      header.style.borderBottomColor = '#2a2a3a'
+      headerShrunk = true
+    } else if(y <= 6 && headerShrunk === true){
+      header.style.backdropFilter = 'blur(8px)'
+      header.style.background = 'rgba(17,17,22,0.75)'
+      header.style.borderBottomColor = '#232334'
+      headerShrunk = false
+    }
+  }
+
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
 }
-song3.onended=function(){
-    console.log('playing song1...')
-    song1.load()
-    song2.pause()
-    song1.play()
-    document.querySelector('.playpause').innerHTML = `
-            <i class="fa-solid fa-pause-circle fa-4x" style="color: white;" onclick="playpauseSong()"></i>
-            `
-    document.querySelector('.albumcover').innerHTML = `
-        <img src="usagain.png"/>
-    `
-    document.querySelector('.nowplaying').innerHTML = `
-        Us, again
-    `
-    document.querySelector('.artist').innerHTML = `
-        Seventeen
-    ` 
-    var url ="usagain.png"
-        var div = document.getElementById("songplayer");
-        div.style.backgroundImage = `url(${url})`;
-        currentTrack=1
+
+// ---------- Init（一步步呼叫，像你的 loadSong() 方式） ----------
+function initPortfolio(){
+  setHeroBackground()
+  bindSmoothScroll()
+  setActiveNav()
+  initAvatar()
+  bindButtons()
+  bindLightbox()
+  bindReveal()
+  bindContactForm()
+  handleHeaderOnScroll()
+}
+
+if(document.readyState === 'loading'){
+  document.addEventListener('DOMContentLoaded', initPortfolio)
+} else {
+  initPortfolio()
 }
 
