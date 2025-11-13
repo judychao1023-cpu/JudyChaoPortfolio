@@ -469,43 +469,64 @@
     color: #777f8f;
   }
   
-  /* ===============================
-     Gallery
-     =============================== */
-     .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-    
-    .gallery__item {
-      border-radius: 12px;
-      overflow: hidden;
-      background: #111;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.35);
-    }
-    
-    .gallery__item {
-      border-radius: 12px;
-      overflow: hidden;
-      background: #111;              /* 黑底讓不同比例的照片更好看 */
-      box-shadow: 0 3px 10px rgba(0,0,0,0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px;                  /* ⭐ 縮圖邊界 */
-    }
-    
-    .gallery__item img {
-      width: 100%;
-      height: auto;                  /* ⭐ 等比例縮圖 */
-      object-fit: contain;           /* ⭐ 不裁切、不變形 */
-      border-radius: 10px;
-    }
-    .gallery__item {
-      cursor: pointer;   /* ✅ 整個卡片有手指圖示 */
-    } 
+/* ===============================
+   Gallery Thumbnail With Overlay
+   =============================== */
+
+   .gallery__item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: transparent;       /* 不要黑底 */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* 縮圖：等比例、不裁切 */
+  .gallery__item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+  
+  /* 透淺色 overlay（使用你的 eggshell） */
+  .gallery__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--eggshell);
+    opacity: 0.55;                 /* ⭐ 透明度可調，0.45～0.6 都很好看 */
+    pointer-events: none;          /* 保留可點擊 */
+  }
+  
+  /* alt 文字作為 caption */
+  .gallery__item::after {
+    content: attr(data-alt);       /* ⭐ 從 data-alt 讀 */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);             /* 深色文字 */
+    pointer-events: none;
+  }
+  
+  /* hover：overlay 更淡、文字更亮 */
+  .gallery__item:hover::before {
+    opacity: 0.35;
+  }
+  
+  .gallery__item:hover::after {
+    color: var(--gold);
+  }
+  
 
   /* ===============================
    Lightbox Popup
