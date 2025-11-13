@@ -120,7 +120,7 @@
     width: 36px;
     height: 34px;
     border-radius: 999px;
-    border: 1px solid rgba(203, 208, 216, 0.85);
+    border: 0px solid rgba(203, 208, 216, 0.85);
     background: rgba(51, 61, 81, 0.95);
     cursor: pointer;
     align-items: center;
