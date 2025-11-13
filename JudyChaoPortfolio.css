@@ -298,7 +298,16 @@
   flex-wrap: wrap;
   gap: 22px;
 }
-
+@media (max-width: 600px) {
+  .home-tabs {
+    display: grid;                             /* 改用 grid */
+    grid-template-columns: repeat(3, auto);    /* 一排最多三個 */
+    justify-content: center;                   /* 整體置中 */
+    justify-items: center;                     /* 每個字自己也置中 */
+    row-gap: 10px;
+    column-gap: 18px;
+  }
+}
 .home-tabs a {
   font-size: 15px;
   color: #e5e5e5;
@@ -329,7 +338,16 @@
     display: none;
   }
 }
-  
+ /* 手機版：overlay 跟著圖片走，避免滑動時穿幫 */
+@media (max-width: 600px) {
+  .home-hero-overlay {
+    position: absolute; /* ← 覆蓋掉 fixed，跟 section 高度一起動 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+} 
   /* ===============================
      Avatar（About）
      =============================== */
