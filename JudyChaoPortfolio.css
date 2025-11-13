@@ -739,7 +739,7 @@
   .timeline-marker {
     position: absolute;
     top: 4px;
-    left: -11px;                           /* 緊貼 2px 線 */
+    left: -81px;                           /* 緊貼 2px 線 */
     width: 14px;
     height: 14px;
     border-radius: 50%;
