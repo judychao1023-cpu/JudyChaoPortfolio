@@ -582,13 +582,16 @@
     }
   
     .avatar {
-      width: 210px;
-      height: 210px;
+      width: 80%;               /* 手機版保持適中寬度 */
+      max-width: 320px;         /* 避免太大 */
       margin: 16px auto;
     }
   
-    .name {
-      font-size: 22px;
+    .avatar img {
+      width: 100%;              /* 自動依容器等比例縮放 */
+      height: auto;
+      object-fit: contain;      
     }
+  
   }
   
