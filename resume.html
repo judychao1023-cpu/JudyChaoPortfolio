@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Judy Chao · Resume</title>
-  <meta name="description" content="Resume — Judy Chao (趙子寧)" />
+  <title>Judy Chao · Experience</title>
+  <meta name="description" content="Experience and resume — Judy Chao (趙子寧)" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    body { padding-top: 60px; } /* 為了固定 header 預留空間 */
+  </style>
 </head>
 <body>
+  <!-- 固定導覽列 -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="index.html">
@@ -18,11 +22,12 @@
         <strong>Judy Chao</strong>
       </a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <!-- 如果你原本有漢堡按鈕，記得加回來：
+      <button class="nav-toggle" type="button" aria-label="開啟選單">
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
         <span class="nav-toggle__bar"></span>
-      </button>
+      </button> -->
 
       <nav class="nav__links" aria-label="主導覽">
         <a class="nav__link" href="index.html">Home</a>
@@ -30,43 +35,107 @@
         <a class="nav__link" href="projects.html">Projects</a>
         <a class="nav__link" href="gallery.html">Gallery</a>
         <a class="nav__link is-active" href="resume.html">Experience</a>
-        <a class="nav__link" href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <button id="backToTop" class="backtotop" aria-label="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </button>
-
   <main>
+    <!-- Experience Timeline -->
     <section class="section">
       <div class="container">
-        <h2>Resume</h2>
-        <p class="prose" style="margin-top:10px;">
-          You can view or download my latest resumes in English and Traditional Chinese below.
+        <h1 style="font-size:26px; margin-bottom:6px;">Experience</h1>
+        <p class="prose">
+          A snapshot of the roles and experiences that have shaped my work in communication, media, and photography.
+          （內容你之後可以再自己微調）
         </p>
-        <div class="projects" style="justify-content:center; margin-top:14px;">
-          <a class="project-card" href="趙子寧2025履歷英.pdf" target="_blank" rel="noopener">
-            <h3>Resume (English)</h3>
-            <p class="muted">Open as PDF</p>
-          </a>
-          <a class="project-card" href="趙子寧2025履歷中.pdf" target="_blank" rel="noopener">
-            <h3>履歷（中文）</h3>
-            <p class="muted">以 PDF 開啟</p>
-          </a>
+
+        <div class="timeline">
+          <!-- Item 1：Photojournalism Intern -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">Summer 2025 · Taipei</p>
+              <h3 class="timeline-title">Photojournalism Intern</h3>
+              <p class="timeline-meta">China Times Photography Center · 中時攝影中心</p>
+              <p class="timeline-desc">
+                Covered press conferences, public events, and city life; operated and maintained professional
+                camera gear; selected and edited photos for print and online news; and wrote bilingual captions
+                to convey context clearly and accurately.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 2：B.A. at Ohio State -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">2023 – Present · Columbus, OH</p>
+              <h3 class="timeline-title">B.A. in Communication (CAE) · Business Minor</h3>
+              <p class="timeline-meta">The Ohio State University</p>
+              <p class="timeline-desc">
+                Studying Communication Analysis &amp; Engagement with a Business minor, focusing on media,
+                storytelling, and the intersection of communication strategy, audiences, and organizational goals.
+              </p>
+            </div>
+          </div>
+
+          <!-- Item 3：Selected projects / involvement（可之後自己改） -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <p class="timeline-date">2023 – Present</p>
+              <h3 class="timeline-title">Academic &amp; Creative Projects</h3>
+              <p class="timeline-meta">Communication research · Media &amp; design coursework</p>
+              <p class="timeline-desc">
+                Developed projects on topics such as media effects, interpersonal communication, and mental
+                health advocacy; created speeches, visual stories, and portfolio pieces that connect research
+                with real-world audiences.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="section" style="padding-top: 32px;">
+      <div class="container">
+        <h2 style="font-size:22px; margin-bottom:8px;">Resume</h2>
+        <p class="prose">
+          Download a full version of my resume in English or Chinese.
+        </p>
+
+        <div class="projects" style="margin-top:18px;">
+          <div class="project-card" style="max-width:320px;">
+            <h3>English Resume</h3>
+            <p class="muted">PDF · updated 2025</p>
+            <p style="margin-top:8px;">
+              <a href="趙子寧2025履歷英.pdf" target="_blank" rel="noopener"
+                 style="color:var(--navy); border-bottom:1px solid rgba(211,172,43,0.5); padding-bottom:2px;">
+                View / Download
+              </a>
+            </p>
+          </div>
+
+          <div class="project-card" style="max-width:320px;">
+            <h3>中文版履歷</h3>
+            <p class="muted">PDF · 2025 年版</p>
+            <p style="margin-top:8px;">
+              <a href="趙子寧2025履歷中.pdf" target="_blank" rel="noopener"
+                 style="color:var(--navy); border-bottom:1px solid rgba(211,172,43,0.5); padding-bottom:2px;">
+                檢視／下載
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- Footer（沿用全站簽名樣式） -->
   <footer class="footer">
     <div class="container">
-      <div class="signature">
-        <!-- 之後你想放的小簽名寫這裡 -->
-      </div>
+      <!-- 這裡空著即可，全站簽名在固定 .signature -->
     </div>
   </footer>
 
