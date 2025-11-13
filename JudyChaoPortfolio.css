@@ -375,24 +375,23 @@
   /* ===============================
      Avatar（About）
      =============================== */
-  .avatar {
-    margin: 24px auto;
-    width: 250px;
-    height: 250px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #111;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-  }
-  
-  .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity .4s ease;
-  }
-  
+  /* Avatar 根據圖片原始大小顯示 */
+.avatar {
+  margin: 24px auto;
+  display: inline-block;         /* 讓容器跟著圖片大小跑 */
+  border-radius: 16px;           /* 圓角效果保留 */
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+}
+
+/* 圖片保留原始比例 */
+.avatar img {
+  width: 100%;       /* 照片自動以容器寬度縮放 */
+  height: auto;      /* 保持原始比例，不裁切 */
+  object-fit: contain;
+  opacity: 1;        /* 如果你有淡入效果，可以改回 transition 的版本 */
+}
   .avatar img.is-ready {
     opacity: 1;
   }
