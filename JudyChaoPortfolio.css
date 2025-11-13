@@ -227,58 +227,78 @@ body.nav-open .nav__links {
   height: 18px;
 }
 
-/* ===== Home Page 專用 ===== */
+/* ===== Home Page Hero ===== */
 
-/* 整個 Home 用一般 flow，不用 fixed header */
-.home-main {
-  padding-top: 0;
-}
-
-/* 照片完整顯示，不裁切，寬度滿版，高度自適應 */
-.home-hero-img {
+.home-hero {
+  position: relative;
+  min-height: 100vh;
   width: 100%;
-  height: auto;
-  display: block;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
-/* 文字區 */
-.home-intro {
+/* overlay（關鍵：文字要顯眼） */
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);   /* 可調透黑 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* Hero 文字區：置中 */
+.home-hero-content {
   text-align: center;
-  padding: 24px 16px 40px;
+  max-width: 700px;
 }
 
-.home-intro h1 {
-  font-size: 22px;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
+.home-hero-content h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: #fff;
 }
 
-.home-intro p {
-  font-size: 14px;
+.home-hero-content p {
+  font-size: 15px;
   color: #e3e3ea;
+  margin-bottom: 28px;
 }
 
-/* Home 下方 tab 標籤列 */
+/* 標籤列 */
 .home-tabs {
-  margin-top: 16px;
   display: flex;
   justify-content: center;
+  gap: 24px;
   flex-wrap: wrap;
-  gap: 18px;
 }
 
 .home-tabs a {
-  font-size: 14px;
-  cursor: pointer;
-  transition: transform .15s ease, font-size .15s ease, color .15s ease;
-  color: #e3e3ea;
+  font-size: 15px;
+  color: #e5e5e5;
+  transition: font-size .18s ease, transform .18s ease, color .18s ease;
 }
 
 .home-tabs a:hover {
-  font-size: 16px;           /* 滑過去字變大 */
-  transform: translateY(-1px);
-  color: #ffffff;
+  font-size: 17px;
+  transform: translateY(-2px);
+  color: #fff;
 }
+
+/* 手機版微調 */
+@media (max-width: 600px) {
+  .home-hero-content h1 {
+    font-size: 26px;
+  }
+
+  .home-tabs {
+    gap: 16px;
+  }
+}
+
 
 /* ===== Avatar（About 頁） ===== */
 .avatar {
