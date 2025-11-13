@@ -684,14 +684,46 @@
     }
   
   }
+
+  /* ===============================
+   Mobile — Single Column
+   =============================== */
+.timeline {
+  position: relative;
+  margin-top: 20px;
+  padding-left: 26px;
+  border-left: 2px solid var(--grey);   /* 手機單欄線 */
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Marker（手機版貼左線） */
+.timeline-marker {
+  position: absolute;
+  top: 4px;
+  left: -11px;                           /* 緊貼 2px 線 */
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px rgba(203,208,216,0.7);
+}
 /* ===============================
-   Experience Timeline — Mobile (單欄)
+   Mobile — Single Column
    =============================== */
    .timeline {
     position: relative;
     margin-top: 20px;
-    padding-left: 28px;                     /* 給線與點留空間 */
-    border-left: 2px solid var(--grey);
+    padding-left: 26px;
+    border-left: 2px solid var(--grey);   /* 手機單欄線 */
   }
   
   .timeline-item {
@@ -703,11 +735,11 @@
     padding-bottom: 0;
   }
   
-  /* 黃色圓點：精準貼在 timeline 左線（手機） */
+  /* Marker（手機版貼左線） */
   .timeline-marker {
     position: absolute;
     top: 4px;
-    left: -9px;                              /* <== 這裡精準貼線 */
+    left: -11px;                           /* 緊貼 2px 線 */
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -716,88 +748,49 @@
     box-shadow: 0 0 0 2px rgba(203,208,216,0.7);
   }
   
-  .timeline-content {
-    padding-left: 10px;
-  }
-  
-  .timeline-date {
-    font-size: 12px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #7a8190;
-    margin-bottom: 3px;
-  }
-  
-  .timeline-title {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 3px;
-  }
-  
-  .timeline-meta {
-    font-size: 13px;
-    color: #7a8190;
-    margin-bottom: 6px;
-  }
-  
-  .timeline-list {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 14px;
-    line-height: 1.55;
-    color: #4a5262;
-  }
-  
-  .timeline-list li {
-    margin-bottom: 6px;
-  }
-  
-  
   /* ===============================
-     Desktop Two Columns（精緻版 A）
-     線只包住 items
+     Desktop — Two Columns
      =============================== */
   @media (min-width: 900px) {
   
-    /* 整體兩欄 */
+    /* 兩欄 layout */
     .timeline {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 70px;
-      padding-left: 0;                 /* 移除手機版線 */
+      column-gap: 64px;
+  
+      padding-left: 0;      /* 移除手機版線 */
       border-left: none;
     }
   
-    /* 每欄 */
     .timeline-col {
       position: relative;
       display: flex;
       flex-direction: column;
       gap: 36px;
-      padding-left: 32px;              /* 給線留距離（精準） */
+      padding-left: 28px;   /* 給線位置 */
     }
   
-    /* 線只包住該欄 items */
+    /* 每一欄自己的線 */
     .timeline-col::before {
       content: "";
       position: absolute;
       left: 0;
+      top: 0;
+      bottom: 0;           /* 精準包住整欄 items */
       width: 2px;
       background: var(--grey);
-      top: 0;
-      bottom: 0;
     }
   
-    /* item 本身 */
+    /* Desktop item 修正 */
     .timeline-item {
-      padding-left: 12px;              /* 讓標題不貼在線上 */
-      position: relative;
+      padding-left: 20px;    /* 離線一點 */
+      border-left: none;
     }
   
-    /* 黃色圓點：定位以 timeline-col 為準→永遠對齊 */
+    /* Marker（桌面版貼欄線） */
     .timeline-marker {
-      left: -7px !important;           /* <== 電腦最精準位置 */
+      left: -12px;           /* ← 桌機線的位置 */
     }
   }
   
