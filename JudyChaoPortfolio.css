@@ -520,8 +520,8 @@
   /* 簽名像畫作角落一樣貼右下 */
   .footer .container {
     max-width: none;
-    margin: 0;
-    padding: 0;
+    margin: 1;
+    padding: 1;
   }
   
   .signature {
