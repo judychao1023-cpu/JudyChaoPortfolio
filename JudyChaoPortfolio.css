@@ -1,6 +1,12 @@
 /* ===============================
    Reset & Base
    =============================== */
+   :root {
+    --navy: #333D51;
+    --gold: #D3AC2B;
+    --grey: #CBD0D8;
+    --eggshell: #F4F3EA;
+  }
    * {
     margin: 0;
     padding: 0;
@@ -75,17 +81,18 @@
   /* ===============================
      Header / Nav（About 等頁面）
      =============================== */
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    height: 60px;
-    background: rgba(17, 17, 22, 0.82);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #232334;
-  }
+     .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 60px;
+      background: rgba(51, 61, 81, 0.96);   /* navy */
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(203, 208, 216, 0.7); /* grey */
+    }    
+
   
   .nav {
     display: flex;
@@ -100,8 +107,9 @@
     align-items: center;
     gap: 8px;
     font-size: 18px;
-    color: #f5f5f7;
+    color: #F4F3EA;        /* eggshell */
   }
+  
   
   /* 名字左側小圖去掉 */
   .brand__logo {
@@ -114,8 +122,8 @@
     width: 36px;
     height: 34px;
     border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.25);
-    background: rgba(15,15,25,0.9);
+    border: 1px solid rgba(203, 208, 216, 0.8);   /* grey */
+    background: rgba(51, 61, 81, 0.95);           /* navy */
     cursor: pointer;
     align-items: center;
     justify-content: center;
@@ -127,9 +135,10 @@
     width: 18px;
     height: 2px;
     border-radius: 2px;
-    background: #f5f5f7;
+    background: #F4F3EA;  /* eggshell 白一點 */
     transition: transform .25s, opacity .25s;
   }
+  
   
   /* 漢堡 → 叉叉 */
   body.nav-open .nav-toggle__bar:nth-child(1) {
@@ -155,9 +164,9 @@
     padding: 16px;
     gap: 12px;
     font-size: 14px;
-    background: rgba(10,10,18,0.98);
-    border-left: 1px solid #232334;
-    box-shadow: -6px 0 16px rgba(0,0,0,0.5);
+    background: #333D51;                      /* navy 實色 */
+    border-left: 1px solid #CBD0D8;          /* grey */
+    box-shadow: -6px 0 16px rgba(0,0,0,0.4);
     transition: right .25s ease;
     z-index: 900;
   }
@@ -168,8 +177,8 @@
   
   .nav__link {
     position: relative;
-    color: #f5f5f7;
-    opacity: 0.78;
+    color: #F4F3EA;                           /* eggshell 字 */
+    opacity: 0.75;
     padding: 4px 0;
     cursor: pointer;
     transition: opacity .15s ease, color .15s ease;
@@ -177,12 +186,12 @@
   
   .nav__link:hover {
     opacity: 1;
-    color: #9cf;
+    color: #D3AC2B;                           /* gold hover */
   }
   
   .nav__link.is-active {
     opacity: 1;
-    color: #9cf;
+    color: #D3AC2B;                           /* active gold */
   }
   
   .nav__link.is-active::after {
@@ -193,7 +202,7 @@
     width: 18px;
     height: 2px;
     border-radius: 999px;
-    background: #9cf;
+    background: #D3AC2B;                      /* gold 線 */
   }
   
   /* ===============================
