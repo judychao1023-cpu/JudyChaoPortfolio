@@ -759,7 +759,7 @@
   
     /* Marker（桌面版貼欄線） */
     .timeline-marker {
-      left: -120px;           /* ← 桌機線的位置 */
+      left: -80px;           /* ← 桌機線的位置 */
     }
   }
   
