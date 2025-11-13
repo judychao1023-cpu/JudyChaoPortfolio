@@ -84,8 +84,7 @@
     /* ---------- Lightbox (Projects + Gallery) ---------- */
     function setupLightbox() {
       const imgs = [
-        ...qsa('.project-card img'),
-        ...qsa('.gallery__item img')
+        ...qsa('.project-card img')
       ];
       if (!imgs.length || !('HTMLDialogElement' in window)) return;
   
