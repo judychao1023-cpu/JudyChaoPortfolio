@@ -684,4 +684,124 @@
     }
   
   }
-
+/* ===============================
+   Experience Timeline — Mobile (單欄)
+   =============================== */
+   .timeline {
+    position: relative;
+    margin-top: 20px;
+    padding-left: 26px;                     /* 給線留空間 */
+    border-left: 2px solid var(--grey);     /* 一條直線 */
+  }
+  
+  .timeline-item {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+  
+  /* 黃色圓點：手機 → 緊貼 timeline 左線 */
+  .timeline-marker {
+    position: absolute;
+    top: 4px;
+    left: -10px;                            /* 精準貼住 2px 的線 */
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px rgba(203,208,216,0.7);
+  }
+  
+  /* 內容本體 */
+  .timeline-content {
+    padding-left: 8px;
+  }
+  
+  .timeline-date {
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #7a8190;
+    margin-bottom: 2px;
+  }
+  
+  .timeline-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  
+  .timeline-meta {
+    font-size: 13px;
+    color: #7a8190;
+    margin-bottom: 6px;
+  }
+  
+  .timeline-list {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #4a5262;
+  }
+  
+  .timeline-list li {
+    margin-bottom: 6px;
+  }
+  
+  
+  /* ===============================
+     Desktop Two Columns（精緻版 A）
+     線從該欄第一個 item → 最後一個 item
+     =============================== */
+  @media (min-width: 900px) {
+  
+    /* 兩欄排列 */
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 64px;
+      padding-left: 0;                     /* 移除手機版左側線 */
+      border-left: none;
+    }
+  
+    /* 每欄自己的線（精緻版：只包住 items） */
+    .timeline-col {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;                           /* 每個 item 之間距離 */
+      padding-left: 26px;                  /* 留空間給線 */
+    }
+  
+    /* 線：從這欄的第一個 item 到最後一個 item */
+    .timeline-col::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 2px;
+      background: var(--grey);
+  
+      /* 精準包住 items */
+      top: 0;
+      bottom: 0;
+    }
+  
+    /* 每個 item 不需要自己的 border-left */
+    .timeline-item {
+      border: none;
+      padding-left: 20px;                  /* 與線保持距離 */
+      position: relative;
+    }
+  
+    /* 黃點貼在線上（桌面） */
+    .timeline-marker {
+      left: -11px;                         /* 微調後讓圓心在線上 */
+    }
+  }
+  
