@@ -338,13 +338,21 @@
     column-gap: 18px;
   }
   /* 手機版：overlay 跟著圖片走，避免滑動時穿幫 */
-  
+
   .home-hero-overlay {
     position: absolute; /* ← 覆蓋掉 fixed，跟 section 高度一起動 */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+  }
+  /* 讓第 4、5 個（Resume, Contact）排在第 2、3 欄 → 第二排看起來置中 */
+  .home-tabs a:nth-child(4) {
+    grid-column: 2;
+  }
+
+  .home-tabs a:nth-child(5) {
+    grid-column: 3;
   }
 }
  
