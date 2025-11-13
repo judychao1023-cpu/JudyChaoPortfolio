@@ -214,21 +214,26 @@ function openLightbox(images, index) {
 
 figures.forEach(fig => {
   fig.addEventListener("click", () => {
-    const imgs = fig.dataset.images.split(",").map(s => s.trim());
+    const listAttr = fig.dataset.images;
+
+    const imgs = listAttr
+      ? listAttr.split(",").map(s => s.trim())
+      : [fig.querySelector("img").src];
+
     openLightbox(imgs, 0);
   });
 });
 
-document.querySelector(".lightbox-close").onclick = () => {
+lightbox.querySelector(".lightbox-close").onclick = () => {
   lightbox.classList.remove("show");
 };
 
-document.querySelector(".lightbox-prev").onclick = () => {
+lightbox.querySelector(".lightbox-prev").onclick = () => {
   lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
   imgEl.src = lightboxImages[lightboxIndex];
 };
 
-document.querySelector(".lightbox-next").onclick = () => {
+lightbox.querySelector(".lightbox-next").onclick = () => {
   lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
   imgEl.src = lightboxImages[lightboxIndex];
 };
