@@ -532,7 +532,7 @@
   }
   
   .gallery__item:hover::after {
-    color: var(--gold);
+    color: var( --eggshell);
   }
   
 
