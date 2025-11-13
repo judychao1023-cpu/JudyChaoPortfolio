@@ -1,7 +1,6 @@
 /* ===============================
-   Global Reset & Base
+   Reset & Base
    =============================== */
-
    * {
     margin: 0;
     padding: 0;
@@ -32,7 +31,6 @@
   /* ===============================
      Layout Helpers
      =============================== */
-  
   .container {
     max-width: 1040px;
     margin: 0 auto;
@@ -75,9 +73,8 @@
   }
   
   /* ===============================
-     Header / Nav (非 Home 頁)
+     Header / Nav（About 等頁面）
      =============================== */
-  
   .header {
     position: fixed;
     top: 0;
@@ -85,11 +82,9 @@
     right: 0;
     z-index: 1000;
     height: 60px;
-  
-    /* ✅ 底色、邊線、模糊都移除，漂浮感 */
-    background: transparent;
-    border-bottom: none;
-    backdrop-filter: none;
+    background: rgba(17, 17, 22, 0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #232334;
   }
   
   .nav {
@@ -108,15 +103,12 @@
     color: #f5f5f7;
   }
   
-  /* ✅ 左邊小圖標移除 */
+  /* 名字左側的小圖移除 */
   .brand__logo {
     display: none;
   }
   
-  /* ===============================
-     Hamburger Button
-     =============================== */
-  
+  /* 漢堡按鈕 */
   .nav-toggle {
     display: inline-flex;
     width: 36px;
@@ -139,7 +131,7 @@
     transition: transform .25s, opacity .25s;
   }
   
-  /* 漢堡 → 叉叉 動畫 */
+  /* 漢堡 → 叉叉 */
   body.nav-open .nav-toggle__bar:nth-child(1) {
     transform: translateY(4px) rotate(45deg);
   }
@@ -150,10 +142,7 @@
     transform: translateY(-4px) rotate(-45deg);
   }
   
-  /* ===============================
-     Off-canvas Nav（所有尺寸共用）
-     =============================== */
-  
+  /* 側邊選單（所有尺寸共用） */
   .nav__links {
     position: fixed;
     top: 60px;
@@ -173,7 +162,6 @@
     z-index: 900;
   }
   
-  /* 打開時滑出 */
   body.nav-open .nav__links {
     right: 0;
   }
@@ -211,7 +199,6 @@
   /* ===============================
      Back-to-top Button
      =============================== */
-  
   .backtotop {
     position: fixed;
     right: 16px;
@@ -236,36 +223,32 @@
     display: flex;
   }
   
-  .backtotop:hover {
-    opacity: 1;
-    transform: translateY(-2px);
-  }
-  
   .backtotop svg {
     width: 18px;
     height: 18px;
   }
   
   /* ===============================
-     Home Page Hero（背景圖 + 透黑 + 文字）
+     Home Page Hero（不裁切照片）
      =============================== */
   
-  /* Home 的 <main> 不需要預留 header 高度 */
+  /* Home 的 main：不用預留 header 高度 */
   .home-main {
     padding-top: 0;
   }
   
-  /* 你的背景照片 hero 區 */
+  /* hero 使用 background-image + contain 保留完整照片 */
   .home-hero {
     position: relative;
     min-height: 100vh;
     width: 100%;
-    background-size: cover;
+    background-size: contain;          /* ✅ 不裁切：整張都保留 */
     background-position: center center;
     background-repeat: no-repeat;
+    background-color: #000;           /* 照片空白處補黑 */
   }
   
-  /* 透黑 overlay：讓字清楚 */
+  /* 透明黑 overlay，用來突顯文字 */
   .home-hero-overlay {
     position: absolute;
     inset: 0;
@@ -295,7 +278,7 @@
     margin-bottom: 28px;
   }
   
-  /* Home 下方標籤列（About / Projects...） */
+  /* Home 下方文字 tabs */
   .home-tabs {
     display: flex;
     justify-content: center;
@@ -316,7 +299,7 @@
     color: #ffffff;
   }
   
-  /* Home RWD */
+  /* 手機版微調 */
   @media (max-width: 600px) {
     .home-hero-content h1 {
       font-size: 26px;
@@ -327,9 +310,8 @@
   }
   
   /* ===============================
-     Avatar（About 頁）
+     Avatar（About）
      =============================== */
-  
   .avatar {
     margin: 24px auto;
     width: 250px;
@@ -348,7 +330,7 @@
     transition: opacity .4s ease;
   }
   
-  /* JS 載入完成後會加上 is-ready */
+  /* JS 會加 is-ready */
   .avatar img.is-ready {
     opacity: 1;
   }
@@ -360,10 +342,7 @@
     text-align: center;
   }
   
-  /* ===============================
-     About Layout：左右兩欄
-     =============================== */
-  
+  /* About 左右兩欄 */
   .about-layout {
     display: grid;
     grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
@@ -382,7 +361,6 @@
   /* ===============================
      Projects
      =============================== */
-  
   .projects {
     display: flex;
     flex-wrap: wrap;
@@ -417,7 +395,6 @@
   /* ===============================
      Gallery
      =============================== */
-  
   .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -441,7 +418,6 @@
   /* ===============================
      Contact Page Cards
      =============================== */
-  
   .contact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -485,7 +461,7 @@
     opacity: 1;
   }
   
-  /* Contact 手機版一欄 */
+  /* 手機版 Contact 一欄 */
   @media (max-width: 900px) {
     .contact-grid {
       grid-template-columns: 1fr;
@@ -493,33 +469,37 @@
   }
   
   /* ===============================
-     Footer
+     Footer + 簽名（畫作角落）
      =============================== */
   
+  /* Footer 不再有大背景條 */
   .footer {
-    margin-top: 80px;
-    padding: 32px 0 24px;
-    border-top: 1px solid #232334;
-    background: rgba(7,7,11,0.96);
+    padding: 0;            /* 不佔太多高度 */
+    border-top: none;
+    background: transparent;
   }
   
-  .footer .container {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
+  /* 簽名像畫作一樣在右下角小小的 */
   .signature {
-    margin-top: 16px;
-    text-align: center;
-    opacity: 0.7;
-    font-size: 13px;
+    position: fixed;
+    right: 16px;
+    bottom: 10px;
+    font-size: 12px;
+    opacity: 0.65;
+    text-align: right;
+    pointer-events: none;   /* 不擋住點擊 */
+  }
+  
+  /* 容器純粹用來放簽名，不影響版面 */
+  .footer .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
   }
   
   /* ===============================
      Reveal animation
      =============================== */
-  
   .reveal {
     opacity: 0;
     transform: translateY(8px);
@@ -528,7 +508,6 @@
   /* ===============================
      RWD for Sections / About
      =============================== */
-  
   @media (max-width: 900px) {
     .section {
       padding: 64px 0 48px;
