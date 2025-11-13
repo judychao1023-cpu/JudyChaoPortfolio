@@ -182,4 +182,68 @@
       init();
     }
   })();
+
+  // ===============================
+// Gallery Lightbox
+// ===============================
+document.addEventListener('DOMContentLoaded', function () {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return; // 只有在 gallery.html 才會執行
+  
+    const overlay = lightbox.querySelector('.lightbox__overlay');
+    const imgEl = lightbox.querySelector('.lightbox__img');
+    const btnClose = lightbox.querySelector('.lightbox__close');
+    const btnPrev = lightbox.querySelector('.lightbox__arrow--prev');
+    const btnNext = lightbox.querySelector('.lightbox__arrow--next');
+    const thumbs = Array.from(document.querySelectorAll('.gallery__item img'));
+  
+    let currentIndex = 0;
+  
+    // 打開 lightbox
+    function openLightbox(index) {
+      if (!thumbs.length) return;
+      currentIndex = index;
+      const src = thumbs[currentIndex].getAttribute('src');
+      imgEl.src = src;
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden'; // 禁止後面滾動
+    }
+  
+    // 關閉
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  
+    // 換圖
+    function showNext(delta) {
+      if (!thumbs.length) return;
+      currentIndex = (currentIndex + delta + thumbs.length) % thumbs.length;
+      const src = thumbs[currentIndex].getAttribute('src');
+      imgEl.src = src;
+    }
+  
+    // 點縮圖 → 開啟
+    thumbs.forEach((img, idx) => {
+      img.addEventListener('click', () => {
+        openLightbox(idx);
+      });
+    });
+  
+    // 關閉事件
+    btnClose.addEventListener('click', closeLightbox);
+    overlay.addEventListener('click', closeLightbox);
+  
+    // 左右箭頭
+    btnPrev.addEventListener('click', () => showNext(-1));
+    btnNext.addEventListener('click', () => showNext(1));
+  
+    // 鍵盤支援：Esc / ← →
+    window.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showNext(-1);
+      if (e.key === 'ArrowRight') showNext(1);
+    });
+  });
   
