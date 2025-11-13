@@ -12,10 +12,8 @@
   <!-- Styles -->
   <link rel="stylesheet" href="JudyChaoPortfolio.css" />
   <style>
-    /* --- Overrides for header stickiness & back-to-top button --- */
     body{ padding-top:60px; }
     .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
-    /* Back-to-top floating arrow */
     .backtotop{ position:fixed; right:16px; bottom:16px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:rgba(44,44,44,.75); color:#fff; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.4); opacity:.85; transition:opacity .2s, transform .2s; }
     .backtotop:hover{ opacity:1; transform:translateY(-2px); }
     .backtotop.show{ display:flex; }
@@ -23,8 +21,6 @@
   </style>
 </head>
 <body>
-  
-
   <!-- Header / Nav -->
   <header class="header">
     <div class="container nav">
@@ -43,26 +39,21 @@
     </div>
   </header>
 
+  <!-- Back to top arrow -->
   <button id="backToTop" class="backtotop" aria-label="回到頂端">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </button>
 
   <main>
-    <!-- Hero / Profile (full height like music player) -->
+    <!-- Hero / Profile (clean version) -->
     <section id="profile" data-bg="images/hero-bg.jpg" role="banner">
       <div class="cover">
         <div class="wrapper">
           <div class="details">
             <div class="avatar">
-              <img src="images/judy.jpg" alt="Judy Chao portrait" />
+              <img src="images/judy2.jpg" alt="Judy Chao portrait" />
             </div>
             <h1 class="name">Judy Chao · 趙子寧</h1>
-            <p class="title">Communication (CAE) · Business Minor · Photography & Media</p>
-            <div class="buttons">
-              <button class="btn" data-action="resume" data-url="趙子寧2025履歷英.pdf">Resume (EN)</button>
-              <button class="btn" data-action="resume" data-url="趙子寧2025履歷中.pdf">履歷（中）</button>
-              <button class="btn" data-action="contact">Contact</button>
-            </div>
           </div>
         </div>
       </div>
@@ -118,7 +109,7 @@
       </div>
     </section>
 
-    <!-- Resume / Timeline -->
+    <!-- Resume -->
     <section id="resume" class="section">
       <div class="container">
         <h2>Resume Highlights</h2>
@@ -143,7 +134,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       © <span id="year"></span> Judy Chao · All rights reserved
@@ -152,10 +142,8 @@
 
   <noscript>本頁面需要啟用 JavaScript 以獲得完整體驗。</noscript>
 
-  <!-- Scripts -->
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
   <script src="JudyChaoPortfolio.js" defer></script>
-  <!-- Back-to-top logic (inline so不需改動外部 JS) -->
   <script>
     (function(){
       var btn = document.getElementById('backToTop');
@@ -172,6 +160,5 @@
   </script>
 </body>
 </html>
-
   
 
