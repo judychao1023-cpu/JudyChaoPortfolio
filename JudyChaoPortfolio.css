@@ -313,39 +313,46 @@
 }
 
 /* 手機版：改用背景圖滿版顯示，直向完全填滿，橫向可裁切 */
+/* 手機版：背景圖滿版，overlay 不穿幫，tabs 3+2 排列 */
 @media (max-width: 600px) {
+  /* 背景：直向填滿螢幕，橫向可裁切 */
   .home-hero {
     min-height: 100vh;
-    height: 100vh;
     background-image: url('000035500019拷貝2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
 
+  /* 手機上不用 <img>，避免重複 */
   .home-hero-img {
     display: none;
   }
 
+  /* overlay 改成「正常區塊」：跟著圖片一起滑動，不再 fixed/absolute */
   .home-hero-overlay {
-    position: absolute; /* ← 覆蓋掉 fixed，跟 section 高度一起動 */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: relative;          /* ✅ 不再 fixed / absolute */
+    inset: auto;
+    min-height: 100vh;           /* 跟螢幕一樣高 */
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+    pointer-events: auto;        /* 保持可以點 tabs */
   }
 
-  /* 手機版 tabs：3 個一排，第二排置中 */
+  /* 手機版 tabs：5 欄虛擬 grid，確保第二排在縫隙中間 */
   .home-tabs {
     display: grid;
-    grid-template-columns: repeat(5, auto); /* 5 欄的等寬虛擬欄 */
+    grid-template-columns: repeat(5, auto);
+    grid-template-areas:
+      "about . projects . gallery"
+      ". resume . contact .";
     justify-content: center;
     justify-items: center;
     column-gap: 16px;
     row-gap: 10px;
-    grid-template-areas:
-      "about . projects . gallery"
-      ". resume . contact .";
   }
 
   .home-tabs a:nth-child(1) { grid-area: about; }
@@ -353,7 +360,16 @@
   .home-tabs a:nth-child(3) { grid-area: gallery; }
   .home-tabs a:nth-child(4) { grid-area: resume; }
   .home-tabs a:nth-child(5) { grid-area: contact; }
+
+  .home-hero-content h1 {
+    font-size: 26px;
+  }
 }
+
+
+  
+
+  
 
  
   /* ===============================
