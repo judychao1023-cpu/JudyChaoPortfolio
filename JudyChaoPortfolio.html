@@ -18,10 +18,16 @@
     .backtotop:hover{ opacity:1; transform:translateY(-2px); }
     .backtotop.show{ display:flex; }
     .backtotop svg{ width:18px; height:18px; }
-    .avatar > img{ object-fit: cover; }
-      /* 讓頭貼載入後淡入並保持顯示 */
     .avatar > img{ object-fit: cover; opacity: 0; transition: opacity .4s ease; }
     .avatar > img.is-ready{ opacity: 1; }
+      /* Contact: three-card layout */
+    .contact-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:14px; }
+    .contact-card{ background: rgba(44,44,44,0.75); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:16px; text-align:left; box-shadow:0 4px 10px rgba(0,0,0,.35); }
+    .contact-card h3{ font-size:18px; margin:0 0 10px 0; display:flex; align-items:center; gap:8px; }
+    .contact-card ul{ list-style:none; padding:0; margin:0; line-height:1.8; }
+    .contact-card a{ color:#9cf; text-decoration:none; opacity:.9; transition:opacity .2s; }
+    .contact-card a:hover{ opacity:1; }
+    @media (max-width: 900px){ .contact-grid{ grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -128,12 +134,32 @@
     <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
-        <form id="contactForm" class="form" autocomplete="off">
-          <input id="contactName" class="input" type="text" placeholder="Your name" aria-label="Your name" />
-          <input id="contactEmail" class="input" type="email" placeholder="Email" aria-label="Email" />
-          <textarea id="contactMsg" class="textarea" placeholder="Message" aria-label="Message"></textarea>
-          <button class="btn" type="submit">Send</button>
-        </form>
+        <div class="contact-grid">
+          <!-- Phones -->
+          <div class="contact-card reveal">
+            <h3>📱 Phones</h3>
+            <ul>
+              <li>USA: <a href="tel:+16142660320">+1 614-266-0320</a></li>
+              <li>Taiwan: <a href="tel:+886905978531">+886 905-978-531</a></li>
+            </ul>
+          </div>
+          <!-- Emails -->
+          <div class="contact-card reveal">
+            <h3>✉️ Emails</h3>
+            <ul>
+              <li>Personal: <a href="mailto:judychao1023@gmail.com">judychao1023@gmail.com</a></li>
+              <li>School: <a href="mailto:chao.259@buckeyemail.osu.edu">chao.259@buckeyemail.osu.edu</a></li>
+            </ul>
+          </div>
+          <!-- Socials -->
+          <div class="contact-card reveal">
+            <h3>💼 Socials</h3>
+            <ul>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/judy-chao-1a6a49330" target="_blank" rel="noopener">Judy Chao</a></li>
+              <!-- 之後可在這裡新增 IG、Threads、GitHub 等連結 -->
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -148,18 +174,15 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
   <script src="JudyChaoPortfolio.js" defer></script>
-  <!-- Avatar 保持顯示的覆寫邏輯：載入後加上 is-ready，並防止被意外改回透明 -->
+  <!-- Avatar 保持顯示的覆寫邏輯 -->
   <script>
     (function(){
       function ensureAvatarVisible(){
         var img = document.querySelector('.avatar img');
         if(!img) return;
         var makeReady = function(){ img.classList.add('is-ready'); img.style.opacity = '1'; };
-        // 若圖片已快取完成，直接顯示
         if(img.complete){ makeReady(); }
-        // 正常載入時顯示
         img.addEventListener('load', makeReady);
-        // 防呆：有任何腳本把 opacity 改為 0，就立刻改回 1
         var obs = new MutationObserver(function(muts){
           muts.forEach(function(m){
             if(m.type === 'attributes' && m.attributeName === 'style'){
