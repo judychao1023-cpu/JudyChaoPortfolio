@@ -24,6 +24,18 @@
     color: var(--navy);
     line-height: 1.6;
   }
+  .timeline-list {
+    margin: 0;
+    padding-left: 18px;
+    color: #4a5262;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  
+  .timeline-list li {
+    margin-bottom: 6px;
+  }
+  
   
   img {
     max-width: 100%;
