@@ -506,7 +506,7 @@
     position: absolute;
     inset: 0;
     background: var(--eggshell);
-    opacity: 0.38;                /* 可以自己調透明度 0.3–0.6 */
+    opacity: 0.5;                /* 可以自己調透明度 0.3–0.6 */
     pointer-events: none;
   }
   
