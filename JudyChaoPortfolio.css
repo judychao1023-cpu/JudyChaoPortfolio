@@ -829,4 +829,7 @@
       left: -10px;           /* ← 桌機線的位置 */
     }
   }
+  .gallery__item {
+    cursor: pointer;   /* ✅ 整個卡片有手指圖示 */
+  }
   
