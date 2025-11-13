@@ -568,7 +568,7 @@
   /* ===============================
      RWD for Sections / About
      =============================== */
-  @media (max-width: 900px) {
+  @media (max-width: 600px) {
     .section {
       padding: 64px 0 48px;
     }
