@@ -213,32 +213,26 @@ function openLightbox(images, index) {
 }
 
 figures.forEach(fig => {
-    fig.addEventListener("click", () => {
-      const listAttr = fig.dataset.images;
-      let imgs = [];
-      let startIndex = 0;
-  
-      if (listAttr) {
-        // 有 data-images：一組圖片
-        imgs = listAttr.split(",").map(s => s.trim());
-  
-        // 如果有超過 1 張 → 從第二張開始看（跳過封面）
-        if (imgs.length > 1) {
-          startIndex = 1;
-        }
-      } else {
-        // 沒有 data-images：用自己這張 img
-        const imgTag = fig.querySelector("img");
-        if (imgTag) {
-          imgs = [imgTag.src];
-        }
+  fig.addEventListener("click", () => {
+    const listAttr = fig.dataset.images;
+    let imgs = [];
+    let startIndex = 0;   // ✅ 一律從第一張（index 0）開始
+
+    if (listAttr) {
+      // 有 data-images → 一組圖（第一張就是封面）
+      imgs = listAttr.split(",").map(s => s.trim());
+    } else {
+      // 沒 data-images → 單張圖，用自己這張
+      const imgTag = fig.querySelector("img");
+      if (imgTag) {
+        imgs = [imgTag.src];
       }
-  
-      if (!imgs.length) return;  // 保險一下，避免空陣列
-      openLightbox(imgs, startIndex);
-    });
+    }
+
+    if (!imgs.length) return;  // 保險
+    openLightbox(imgs, startIndex);
   });
-  
+});
 
 lightbox.querySelector(".lightbox-close").onclick = () => {
   lightbox.classList.remove("show");
