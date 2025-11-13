@@ -27,7 +27,6 @@
         <a class="nav__link is-active" href="projects.html">Projects</a>
         <a class="nav__link" href="gallery.html">Gallery</a>
         <a class="nav__link" href="resume.html">Resume</a>
-        <a class="nav__link" href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -58,7 +57,45 @@
   </main>
 
   <footer class="footer">
-    <div class="container">© <span id="year"></span> Judy Chao · All rights reserved</div>
+    <div class="container">
+
+        <!-- Contact in footer -->
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>📱 Phones</h3>
+            <ul>
+              <li>USA: <a href="tel:+16142660320">+1 614-266-0320</a></li>
+              <li>Taiwan: <a href="tel:+886905978531">+886 905-978-531</a></li>
+            </ul>
+          </div>
+    
+          <div class="contact-card">
+            <h3>✉️ Emails</h3>
+            <ul>
+              <li>Personal: <a href="mailto:judychao1023@gmail.com">judychao1023@gmail.com</a></li>
+              <li>School: <a href="mailto:chao.259@buckeyemail.osu.edu">chao.259@buckeyemail.osu.edu</a></li>
+            </ul>
+          </div>
+    
+          <div class="contact-card">
+            <h3>💼 Socials</h3>
+            <ul>
+              <li>LinkedIn: 
+                <a href="https://www.linkedin.com/in/judy-chao-1a6a49330" target="_blank" rel="noopener">
+                  Judy Chao
+                </a>
+              </li>
+              <!-- 之後可以在這裡加 IG / Threads / 小紅書 / GitHub -->
+            </ul>
+          </div>
+        </div>
+    
+        <!-- 之後你要放的小簽名，可以填在這裡 -->
+        <div class="signature" style="margin-top:24px; text-align:center; opacity:0.7; font-size:13px;">
+          <!-- e.g. Judy Chao · 2025 或一個小 logo -->
+        </div>
+    
+      </div>
   </footer>
 
   <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
