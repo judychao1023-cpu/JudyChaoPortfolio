@@ -1,27 +1,54 @@
-<main class="home-main">
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Home</title>
+  <meta name="description" content="Home — Portfolio of Judy Chao (趙子寧)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+</head>
+<body>
 
-  <!-- 全螢幕背景 hero -->
-  <section class="home-hero" style="background-image: url('000035500019拷貝2.jpg');">
+  <!-- ✅ Home 不要 header、不要左上名字與 icon -->
 
-    <!-- 透明黑 overlay -->
-    <div class="home-hero-overlay">
+  <!-- Back to top（可留可砍，先留著） -->
+  <button id="backToTop" class="backtotop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
 
-      <!-- 內容置中 -->
-      <div class="home-hero-content">
-        <h1>Portfolio of Judy Chao · 趙子寧</h1>
-        <p>Welcome — explore my work in communication, media, photography, and business.</p>
+  <main class="home-main">
 
-        <!-- 標籤列 -->
-        <nav class="home-tabs">
-          <a href="about.html">About</a>
-          <a href="projects.html">Projects</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="resume.html">Resume</a>
-          <a href="contact.html">Contact</a>
-        </nav>
+    <!-- 全螢幕背景 hero -->
+    <section class="home-hero" style="background-image: url('000035500019拷貝2.jpg');">
+  
+      <!-- 透明黑 overlay -->
+      <div class="home-hero-overlay">
+  
+        <!-- 內容置中 -->
+        <div class="home-hero-content">
+          <h1>Portfolio of Judy Chao · 趙子寧</h1>
+          <p>Welcome — explore my work in communication, media, photography, and business.</p>
+  
+          <!-- 標籤列 -->
+          <nav class="home-tabs">
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="resume.html">Resume</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+  
       </div>
+    </section>
+  
+  </main>
 
-    </div>
-  </section>
-
-</main>
+  <script src="JudyChaoPortfolio.js" defer></script>
+</body>
+</html>
