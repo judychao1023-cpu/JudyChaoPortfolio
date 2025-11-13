@@ -1,503 +1,555 @@
-/* ===== Reset & Base ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-}
+/* ===============================
+   Global Reset & Base
+   =============================== */
 
-html, body {
-  height: 100%;
-}
-
-body {
-  font-family: 'Varela Round', sans-serif;
-  background: #050509;
-  color: #f5f5f7;
-  line-height: 1.6;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-a {
-  color: inherit;
-}
-
-/* ===== Layout Helpers ===== */
-.container {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-.section {
-  padding: 80px 0 64px;
-}
-
-.prose {
-  max-width: 640px;
-  font-size: 15px;
-  color: #e3e3ea;
-}
-
-/* 小指標卡 (About) */
-.kpis {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.kpi {
-  background: rgba(20, 20, 30, 0.9);
-  border-radius: 12px;
-  padding: 10px 14px;
-  min-width: 120px;
-}
-
-.kpi .val {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.kpi .label {
-  font-size: 12px;
-  color: #aaa;
-}
-
-/* ===== Header / Nav Bar（About/Projects/... 用）===== */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: 60px;
-  /* ✅ 底色/邊線/模糊全部拿掉，變成透明漂浮 */
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: none;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  height: 60px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  color: #f5f5f7;
-}
-
-/* ✅ 左邊小圖去除 */
-.brand__logo {
-  display: none;
-}
-
-/* ===== Hamburger Button ===== */
-.nav-toggle {
-  display: inline-flex;
-  width: 36px;
-  height: 34px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(15,15,25,0.9);
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 0 8px;
-}
-
-.nav-toggle__bar {
-  width: 18px;
-  height: 2px;
-  border-radius: 2px;
-  background: #f5f5f7;
-  transition: transform .25s, opacity .25s;
-}
-
-/* 漢堡 → 叉叉 動畫 */
-body.nav-open .nav-toggle__bar:nth-child(1) {
-  transform: translateY(4px) rotate(45deg);
-}
-body.nav-open .nav-toggle__bar:nth-child(2) {
-  opacity: 0;
-}
-body.nav-open .nav-toggle__bar:nth-child(3) {
-  transform: translateY(-4px) rotate(-45deg);
-}
-
-/* ===== Off-canvas Nav（所有尺寸都用側邊欄） ===== */
-.nav__links {
-  position: fixed;
-  top: 60px;
-  right: -260px;
-  width: 220px;
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px;
-  gap: 12px;
-  font-size: 14px;
-  background: rgba(10,10,18,0.98);
-  border-left: 1px solid #232334;
-  box-shadow: -6px 0 16px rgba(0,0,0,0.5);
-  transition: right .25s ease;
-  z-index: 900;
-}
-
-/* 打開時滑出來 */
-body.nav-open .nav__links {
-  right: 0;
-}
-
-.nav__link {
-  position: relative;
-  color: #f5f5f7;
-  opacity: 0.78;
-  padding: 4px 0;
-  cursor: pointer;
-  transition: opacity .15s ease, color .15s ease;
-}
-
-.nav__link:hover {
-  opacity: 1;
-  color: #9cf;
-}
-
-.nav__link.is-active {
-  opacity: 1;
-  color: #9cf;
-}
-
-.nav__link.is-active::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 18px;
-  height: 2px;
-  border-radius: 999px;
-  background: #9cf;
-}
-
-/* ===== Back-to-top button ===== */
-.backtotop {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(44,44,44,.75);
-  color: #fff;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,.4);
-  opacity: .85;
-  transition: opacity .2s, transform .2s;
-  z-index: 900;
-}
-
-.backtotop.show {
-  display: flex;
-}
-
-.backtotop:hover {
-  opacity: 1;
-  transform: translateY(-2px);
-}
-
-.backtotop svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* ===== Home Page Hero ===== */
-
-.home-hero {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-/* overlay（關鍵：文字要顯眼） */
-.home-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.45);   /* 可調透黑 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 16px;
-}
-
-/* Hero 文字區：置中 */
-.home-hero-content {
-  text-align: center;
-  max-width: 700px;
-}
-
-.home-hero-content h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-  line-height: 1.3;
-  color: #fff;
-}
-
-.home-hero-content p {
-  font-size: 15px;
-  color: #e3e3ea;
-  margin-bottom: 28px;
-}
-
-/* 標籤列 */
-.home-tabs {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.home-tabs a {
-  font-size: 15px;
-  color: #e5e5e5;
-  transition: font-size .18s ease, transform .18s ease, color .18s ease;
-}
-
-.home-tabs a:hover {
-  font-size: 17px;
-  transform: translateY(-2px);
-  color: #fff;
-}
-
-/* 手機版微調 */
-@media (max-width: 600px) {
-  .home-hero-content h1 {
-    font-size: 26px;
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
   }
-
-  .home-tabs {
-    gap: 16px;
+  
+  html, body {
+    height: 100%;
   }
-}
-
-
-/* ===== Avatar（About 頁） ===== */
-.avatar {
-  margin: 24px auto;
-  width: 250px;
-  height: 250px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #111;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity .4s ease;
-}
-
-.avatar img.is-ready {
-  opacity: 1;
-}
-
-.name {
-  font-size: 26px;
-  color: #f5f5f7;
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-/* ===== About Layout：左右兩欄 ===== */
-.about-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-}
-
-.about-profile {
-  text-align: center;
-}
-
-.about-text h2 {
-  font-size: 22px;
-}
-
-/* ===== Projects ===== */
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.project-card {
-  flex: 1 1 280px;
-  background: rgba(20, 20, 30, 0.95);
-  border-radius: 14px;
-  padding: 12px 12px 16px;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.45);
-}
-
-.project-card img {
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-.project-card h3 {
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-.muted {
-  font-size: 13px;
-  color: #aaaaaa;
-}
-
-/* ===== Gallery ===== */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.gallery__item {
-  border-radius: 12px;
-  overflow: hidden;
-  background: #111;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
-}
-
-.gallery__item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ===== Contact Page Cards ===== */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 14px;
-}
-
-.contact-card {
-  background: rgba(44,44,44,0.75);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
-  padding: 16px;
-  text-align: left;
-  box-shadow: 0 4px 10px rgba(0,0,0,.35);
-}
-
-.contact-card h3 {
-  font-size: 16px;
-  margin: 0 0 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.contact-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-.contact-card a {
-  color: #9cf;
-  text-decoration: none;
-  opacity: .9;
-  transition: opacity .2s;
-}
-
-.contact-card a:hover {
-  opacity: 1;
-}
-
-/* Contact 手機版一欄 */
-@media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
+  
+  body {
+    font-family: 'Varela Round', sans-serif;
+    background: #050509;
+    color: #f5f5f7;
+    line-height: 1.6;
   }
-}
-
-/* ===== Footer ===== */
-.footer {
-  margin-top: 80px;
-  padding: 32px 0 24px;
-  border-top: 1px solid #232334;
-  background: rgba(7,7,11,0.96);
-}
-
-.footer .container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.signature {
-  margin-top: 16px;
-  text-align: center;
-  opacity: 0.7;
-  font-size: 13px;
-}
-
-/* ===== Reveal animation ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(8px);
-}
-
-/* ===== RWD for About/Sections ===== */
-@media (max-width: 900px) {
+  
+  img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  a {
+    color: inherit;
+  }
+  
+  /* ===============================
+     Layout Helpers
+     =============================== */
+  
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
   .section {
-    padding: 64px 0 48px;
+    padding: 80px 0 64px;
   }
-
-  .about-layout {
-    grid-template-columns: 1fr;
+  
+  .prose {
+    max-width: 640px;
+    font-size: 15px;
+    color: #e3e3ea;
   }
-
-  .about-profile {
-    order: -1;
+  
+  /* Small metric cards (About) */
+  .kpis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
   }
-
+  
+  .kpi {
+    background: rgba(20, 20, 30, 0.9);
+    border-radius: 12px;
+    padding: 10px 14px;
+    min-width: 120px;
+  }
+  
+  .kpi .val {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .kpi .label {
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  /* ===============================
+     Header / Nav (非 Home 頁)
+     =============================== */
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 60px;
+  
+    /* ✅ 底色、邊線、模糊都移除，漂浮感 */
+    background: transparent;
+    border-bottom: none;
+    backdrop-filter: none;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 60px;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    color: #f5f5f7;
+  }
+  
+  /* ✅ 左邊小圖標移除 */
+  .brand__logo {
+    display: none;
+  }
+  
+  /* ===============================
+     Hamburger Button
+     =============================== */
+  
+  .nav-toggle {
+    display: inline-flex;
+    width: 36px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(15,15,25,0.9);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 0 8px;
+  }
+  
+  .nav-toggle__bar {
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: #f5f5f7;
+    transition: transform .25s, opacity .25s;
+  }
+  
+  /* 漢堡 → 叉叉 動畫 */
+  body.nav-open .nav-toggle__bar:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+  body.nav-open .nav-toggle__bar:nth-child(2) {
+    opacity: 0;
+  }
+  body.nav-open .nav-toggle__bar:nth-child(3) {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+  
+  /* ===============================
+     Off-canvas Nav（所有尺寸共用）
+     =============================== */
+  
+  .nav__links {
+    position: fixed;
+    top: 60px;
+    right: -260px;
+    width: 220px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 12px;
+    font-size: 14px;
+    background: rgba(10,10,18,0.98);
+    border-left: 1px solid #232334;
+    box-shadow: -6px 0 16px rgba(0,0,0,0.5);
+    transition: right .25s ease;
+    z-index: 900;
+  }
+  
+  /* 打開時滑出 */
+  body.nav-open .nav__links {
+    right: 0;
+  }
+  
+  .nav__link {
+    position: relative;
+    color: #f5f5f7;
+    opacity: 0.78;
+    padding: 4px 0;
+    cursor: pointer;
+    transition: opacity .15s ease, color .15s ease;
+  }
+  
+  .nav__link:hover {
+    opacity: 1;
+    color: #9cf;
+  }
+  
+  .nav__link.is-active {
+    opacity: 1;
+    color: #9cf;
+  }
+  
+  .nav__link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: #9cf;
+  }
+  
+  /* ===============================
+     Back-to-top Button
+     =============================== */
+  
+  .backtotop {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(44,44,44,.75);
+    color: #fff;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+    opacity: .85;
+    transition: opacity .2s, transform .2s;
+    z-index: 900;
+  }
+  
+  .backtotop.show {
+    display: flex;
+  }
+  
+  .backtotop:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  
+  .backtotop svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* ===============================
+     Home Page Hero（背景圖 + 透黑 + 文字）
+     =============================== */
+  
+  /* Home 的 <main> 不需要預留 header 高度 */
+  .home-main {
+    padding-top: 0;
+  }
+  
+  /* 你的背景照片 hero 區 */
+  .home-hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  /* 透黑 overlay：讓字清楚 */
+  .home-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  
+  /* 文字置中 */
+  .home-hero-content {
+    text-align: center;
+    max-width: 720px;
+  }
+  
+  .home-hero-content h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+    color: #fff;
+  }
+  
+  .home-hero-content p {
+    font-size: 15px;
+    color: #e3e3ea;
+    margin-bottom: 28px;
+  }
+  
+  /* Home 下方標籤列（About / Projects...） */
+  .home-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  
+  .home-tabs a {
+    font-size: 15px;
+    color: #e5e5e5;
+    transition: font-size .18s ease, transform .18s ease, color .18s ease;
+    cursor: pointer;
+  }
+  
+  .home-tabs a:hover {
+    font-size: 17px;
+    transform: translateY(-2px);
+    color: #ffffff;
+  }
+  
+  /* Home RWD */
+  @media (max-width: 600px) {
+    .home-hero-content h1 {
+      font-size: 26px;
+    }
+    .home-tabs {
+      gap: 16px;
+    }
+  }
+  
+  /* ===============================
+     Avatar（About 頁）
+     =============================== */
+  
   .avatar {
-    width: 210px;
-    height: 210px;
-    margin: 16px auto;
+    margin: 24px auto;
+    width: 250px;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.7);
   }
-
+  
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .4s ease;
+  }
+  
+  /* JS 載入完成後會加上 is-ready */
+  .avatar img.is-ready {
+    opacity: 1;
+  }
+  
   .name {
+    font-size: 26px;
+    color: #f5f5f7;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  /* ===============================
+     About Layout：左右兩欄
+     =============================== */
+  
+  .about-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+  }
+  
+  .about-profile {
+    text-align: center;
+  }
+  
+  .about-text h2 {
     font-size: 22px;
   }
-}
+  
+  /* ===============================
+     Projects
+     =============================== */
+  
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  
+  .project-card {
+    flex: 1 1 280px;
+    background: rgba(20, 20, 30, 0.95);
+    border-radius: 14px;
+    padding: 12px 12px 16px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+  }
+  
+  .project-card img {
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .project-card h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .muted {
+    font-size: 13px;
+    color: #aaaaaa;
+  }
+  
+  /* ===============================
+     Gallery
+     =============================== */
+  
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  
+  .gallery__item {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  }
+  
+  .gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* ===============================
+     Contact Page Cards
+     =============================== */
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 14px;
+  }
+  
+  .contact-card {
+    background: rgba(44,44,44,0.75);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0,0,0,.35);
+  }
+  
+  .contact-card h3 {
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .contact-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+  
+  .contact-card a {
+    color: #9cf;
+    text-decoration: none;
+    opacity: .9;
+    transition: opacity .2s;
+  }
+  
+  .contact-card a:hover {
+    opacity: 1;
+  }
+  
+  /* Contact 手機版一欄 */
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* ===============================
+     Footer
+     =============================== */
+  
+  .footer {
+    margin-top: 80px;
+    padding: 32px 0 24px;
+    border-top: 1px solid #232334;
+    background: rgba(7,7,11,0.96);
+  }
+  
+  .footer .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .signature {
+    margin-top: 16px;
+    text-align: center;
+    opacity: 0.7;
+    font-size: 13px;
+  }
+  
+  /* ===============================
+     Reveal animation
+     =============================== */
+  
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  
+  /* ===============================
+     RWD for Sections / About
+     =============================== */
+  
+  @media (max-width: 900px) {
+    .section {
+      padding: 64px 0 48px;
+    }
+  
+    .about-layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .about-profile {
+      order: -1;
+    }
+  
+    .avatar {
+      width: 210px;
+      height: 210px;
+      margin: 16px auto;
+    }
+  
+    .name {
+      font-size: 22px;
+    }
+  }
+  
