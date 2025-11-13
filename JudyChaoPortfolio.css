@@ -736,4 +736,29 @@
       left: -8px;
     }
   }
-  
+/* =========================================
+   修正：讓 timeline 黃點永遠貼在線上（手機＋桌機）
+   ========================================= */
+
+/* 手機（單欄）－－線在 timeline 的左邊 */
+.timeline {
+  position: relative;
+}
+.timeline-marker {
+  position: absolute;
+  left: -9px;               /* 緊貼線 */
+  top: 4px;
+}
+
+/* 桌機（兩欄）－－線在 timeline-col::before */
+@media (min-width: 900px) {
+
+  /* 重新定位黃點：以 timeline-col 的線為基準 */
+  .timeline-col {
+    position: relative;
+  }
+
+  .timeline-marker {
+    left: -10px;            /* 讓黃點貼在新線上 */
+  }
+}
