@@ -19,6 +19,9 @@
     .backtotop.show{ display:flex; }
     .backtotop svg{ width:18px; height:18px; }
     .avatar > img{ object-fit: cover; }
+      /* 讓頭貼載入後淡入並保持顯示 */
+    .avatar > img{ object-fit: cover; opacity: 0; transition: opacity .4s ease; }
+    .avatar > img.is-ready{ opacity: 1; }
   </style>
 </head>
 <body>
@@ -145,6 +148,33 @@
 
   <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
   <script src="JudyChaoPortfolio.js" defer></script>
+  <!-- Avatar 保持顯示的覆寫邏輯：載入後加上 is-ready，並防止被意外改回透明 -->
+  <script>
+    (function(){
+      function ensureAvatarVisible(){
+        var img = document.querySelector('.avatar img');
+        if(!img) return;
+        var makeReady = function(){ img.classList.add('is-ready'); img.style.opacity = '1'; };
+        // 若圖片已快取完成，直接顯示
+        if(img.complete){ makeReady(); }
+        // 正常載入時顯示
+        img.addEventListener('load', makeReady);
+        // 防呆：有任何腳本把 opacity 改為 0，就立刻改回 1
+        var obs = new MutationObserver(function(muts){
+          muts.forEach(function(m){
+            if(m.type === 'attributes' && m.attributeName === 'style'){
+              var op = img.style.opacity;
+              if(op === '0'){ img.style.opacity = '1'; img.classList.add('is-ready'); }
+            }
+          });
+        });
+        obs.observe(img, { attributes: true, attributeFilter: ['style'] });
+      }
+      if(document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', ensureAvatarVisible);
+      } else { ensureAvatarVisible(); }
+    })();
+  </script>
   <script>
     (function(){
       var btn = document.getElementById('backToTop');
@@ -161,5 +191,3 @@
   </script>
 </body>
 </html>
-  
-
