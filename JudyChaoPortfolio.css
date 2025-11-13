@@ -684,4 +684,35 @@
     }
   
   }
-  
+  /* ===============================
+   Desktop: Timeline → Two Columns
+   =============================== */
+@media (min-width: 900px) {
+
+  /* 外框改成兩欄 grid */
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* 兩直欄 */
+    column-gap: 48px;
+    row-gap: 32px;
+    padding-left: 0;
+    border-left: none;               /* 取消整條線 */
+  }
+
+  /* 每個 item 自帶自己的 timeline 線 */
+  .timeline-item {
+    position: relative;
+    padding-left: 28px;
+    border-left: 2px solid var(--grey);
+  }
+
+  /* 圓點 marker 保持在每欄左邊 */
+  .timeline-marker {
+    left: -9px;
+  }
+
+  /* 避免文字擠在一角 */
+  .timeline-content {
+    padding-left: 6px;
+  }
+}
