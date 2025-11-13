@@ -492,115 +492,71 @@
       object-fit: cover;
     }
 
-    /* ===============================
-   Gallery Lightbox
+  /* ===============================
+   Lightbox Popup
    =============================== */
-
-/* 容器：預設隱藏 */
 .lightbox {
   position: fixed;
   inset: 0;
-  display: none;                 /* 用 is-open 來控制顯示 */
-  align-items: center;
+  display: none;
   justify-content: center;
-  z-index: 1200;
+  align-items: center;
+  z-index: 2000;
 }
 
-/* 打開時 */
-.lightbox.is-open {
+.lightbox.show {
   display: flex;
 }
 
-/* 深色背景 */
-.lightbox__overlay {
+.lightbox-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(4px);
 }
 
-/* 內部框 */
-.lightbox__inner {
-  position: relative;
-  z-index: 1;
-  max-width: 90vw;
-  max-height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 大圖 */
-.lightbox__img {
-  max-width: 80vw;
-  max-height: 80vh;
+.lightbox-img {
+  max-width: 80%;
+  max-height: 80%;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
-/* 關閉按鈕（右上角） */
-.lightbox__close {
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
   position: absolute;
-  top: -32px;
-  right: -4px;
-  background: transparent;
-  border: none;
-  color: #f5f5f5;
+  z-index: 11;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
   font-size: 28px;
+  padding: 6px 12px;
+  border-radius: 10px;
   cursor: pointer;
-  line-height: 1;
+  transition: 0.2s;
 }
 
-/* 左右箭頭 */
-.lightbox__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: rgba(0,0,0,0.5);
-  color: #f5f5f5;
-  width: 32px;
-  height: 48px;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.lightbox-close {
+  top: 20px;
+  right: 24px;
 }
 
-.lightbox__arrow--prev {
-  left: -44px;
+.lightbox-prev {
+  left: 20px;
 }
 
-.lightbox__arrow--next {
-  right: -44px;
+.lightbox-next {
+  right: 20px;
 }
 
-/* 小一點螢幕調整一下箭頭位置 */
-@media (max-width: 700px) {
-  .lightbox__inner {
-    max-width: 96vw;
-    max-height: 80vh;
-  }
-
-  .lightbox__img {
-    max-width: 86vw;
-    max-height: 70vh;
-  }
-
-  .lightbox__arrow--prev {
-    left: 4px;
-  }
-
-  .lightbox__arrow--next {
-    right: 4px;
-  }
-
-  .lightbox__close {
-    top: 4px;
-    right: 8px;
-  }
+.lightbox button:hover {
+  background: rgba(255,255,255,0.3);
 }
+
 
   /* ===============================
    Experience Timeline
