@@ -47,7 +47,7 @@
     color: #e3e3ea;
   }
   
-  /* Small metric cards (About) */
+  /* 小指標卡 (About) */
   .kpis {
     display: flex;
     flex-wrap: wrap;
@@ -103,7 +103,7 @@
     color: #f5f5f7;
   }
   
-  /* 名字左側的小圖移除 */
+  /* 名字左側小圖去掉 */
   .brand__logo {
     display: none;
   }
@@ -202,7 +202,7 @@
   .backtotop {
     position: fixed;
     right: 16px;
-    bottom: 16px;
+    bottom: 40px;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -229,26 +229,28 @@
   }
   
   /* ===============================
-     Home Page Hero（不裁切照片）
+     Home Page（照片不裁切）
      =============================== */
   
-  /* Home 的 main：不用預留 header 高度 */
+  /* Home 不需要預留 header 高度 */
   .home-main {
     padding-top: 0;
   }
   
-  /* hero 使用 background-image + contain 保留完整照片 */
+  /* 外框：高度 = 圖片高度，自然捲動 */
   .home-hero {
     position: relative;
-    min-height: 100vh;
     width: 100%;
-    background-size: contain;          /* ✅ 不裁切：整張都保留 */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #000;           /* 照片空白處補黑 */
   }
   
-  /* 透明黑 overlay，用來突顯文字 */
+  /* 照片：橫向填滿，高度自動 → 不裁切 */
+  .home-hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* 透明黑 overlay，跟著圖片一起滾動 */
   .home-hero-overlay {
     position: absolute;
     inset: 0;
@@ -259,10 +261,11 @@
     padding: 40px 16px;
   }
   
-  /* 文字置中 */
+  /* 文字：水平置中 */
   .home-hero-content {
     text-align: center;
     max-width: 720px;
+    margin: 0 auto;
   }
   
   .home-hero-content h1 {
@@ -278,7 +281,7 @@
     margin-bottom: 28px;
   }
   
-  /* Home 下方文字 tabs */
+  /* Home 的 tabs（About / Projects...） */
   .home-tabs {
     display: flex;
     justify-content: center;
@@ -299,7 +302,7 @@
     color: #ffffff;
   }
   
-  /* 手機版微調 */
+  /* 手機版 Home 微調 */
   @media (max-width: 600px) {
     .home-hero-content h1 {
       font-size: 26px;
@@ -330,7 +333,6 @@
     transition: opacity .4s ease;
   }
   
-  /* JS 會加 is-ready */
   .avatar img.is-ready {
     opacity: 1;
   }
@@ -469,32 +471,31 @@
   }
   
   /* ===============================
-     Footer + 簽名（畫作角落）
+     Footer + 右下角簽名
      =============================== */
   
-  /* Footer 不再有大背景條 */
+  /* Footer 本身不要整條背景 */
   .footer {
-    padding: 0;            /* 不佔太多高度 */
+    padding: 0;
     border-top: none;
     background: transparent;
   }
   
-  /* 簽名像畫作一樣在右下角小小的 */
-  .signature {
-    position: fixed;
-    right: 16px;
-    bottom: 10px;
-    font-size: 12px;
-    opacity: 0.65;
-    text-align: right;
-    pointer-events: none;   /* 不擋住點擊 */
-  }
-  
-  /* 容器純粹用來放簽名，不影響版面 */
+  /* 簽名像畫作角落一樣貼右下 */
   .footer .container {
     max-width: none;
     margin: 0;
     padding: 0;
+  }
+  
+  .signature {
+    position: fixed;
+    right: 12px;
+    bottom: 10px;
+    font-size: 12px;
+    opacity: 0.65;
+    text-align: right;
+    pointer-events: none;  /* 不擋住點擊 */
   }
   
   /* ===============================
