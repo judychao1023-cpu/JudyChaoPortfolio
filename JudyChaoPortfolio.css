@@ -684,45 +684,4 @@
     }
   
   }
-  /* ===============================
-   Desktop: unified vertical line per column (1–3 & 4–6)
-   =============================== */
-@media (min-width: 900px) {
 
-  .timeline {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 60px;
-    align-items: start;
-  }
-
-  .timeline-col {
-    position: relative;               /* 讓整欄可以放一條線 */
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-left: 26px;               /* 給整欄的線空間 */
-  }
-
-  /* 左右兩欄各自一條直線 */
-  .timeline-col::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;                        /* ← 撐滿整欄高度 */
-    left: 0;
-    width: 2px;
-    background: var(--grey);          /* timeline 的線 */
-  }
-
-  /* 移除每個 item 的單獨線 */
-  .timeline-item {
-    border-left: none;
-    padding-left: 20px;               /* 微調與線的距離 */
-  }
-
-  /* Marker 仍然放在統一線上 */
-  .timeline-marker {
-    left: -8px;
-  }
-}
