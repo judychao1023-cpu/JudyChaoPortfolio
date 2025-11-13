@@ -330,14 +330,14 @@
   /* 手機版 tabs：3 個一排，第二排置中 */
   .home-tabs {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-areas:
-      "about projects gallery"
-      ".     resume  contact";
-    justify-content: center;   /* 整個 grid 置中 */
-    justify-items: center;     /* 每個 item 自己也置中 */
+    grid-template-columns: repeat(5, auto); /* 5 欄的等寬虛擬欄 */
+    justify-content: center;
+    justify-items: center;
+    column-gap: 16px;
     row-gap: 10px;
-    column-gap: 18px;
+    grid-template-areas:
+      "about . projects . gallery"
+      ". resume . contact .";
   }
 
   .home-tabs a:nth-child(1) { grid-area: about; }
