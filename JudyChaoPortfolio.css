@@ -327,31 +327,24 @@
     display: none;
   }
 
+  /* 手機版 tabs：3 個一排，第二排置中 */
   .home-tabs {
     display: grid;
     grid-template-columns: repeat(3, auto);
-    justify-content: center;
-    justify-items: center;
+    grid-template-areas:
+      "about projects gallery"
+      ".     resume  contact";
+    justify-content: center;   /* 整個 grid 置中 */
+    justify-items: center;     /* 每個 item 自己也置中 */
     row-gap: 10px;
     column-gap: 18px;
   }
 
-  /* ⭐ 這兩個新加的 */
-  .home-tabs a:nth-child(4) {
-    grid-column: 2;
-  }
-
-  .home-tabs a:nth-child(5) {
-    grid-column: 3;
-  }
-
-  .home-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
+  .home-tabs a:nth-child(1) { grid-area: about; }
+  .home-tabs a:nth-child(2) { grid-area: projects; }
+  .home-tabs a:nth-child(3) { grid-area: gallery; }
+  .home-tabs a:nth-child(4) { grid-area: resume; }
+  .home-tabs a:nth-child(5) { grid-area: contact; }
 }
 
  
