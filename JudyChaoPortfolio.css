@@ -1,259 +1,39 @@
-/* =============================================
-   Judy Chao — Portfolio CSS (simple style)
-   Matches the minimal, component-first style
-   you used for the music player.
-   File: JudyChaoPortfolio.css
-   Last updated: 2025-11-13
-   ============================================= */
-
-/* --------------------
-   1) Reset & Base
-   -------------------- */
-   *{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    box-sizing: border-box;
-  }
-  
-  html, body { height: 100%; }
-  
-  body {
-    font-family: 'Varela Round', sans-serif;
-    background-color: #0b0b0f;
-    color: #f1f1f1;
-  }
-  
-  img, video { max-width: 100%; display: block; }
-  
-  .container{
-    width: min(1120px, 92%);
-    margin: 0 auto;
-  }
-  
-  .section { padding: 80px 0; }
-  
-  /* Focus visibility */
-  :focus-visible { outline: 2px solid #6ee7ff; outline-offset: 2px; }
-  
-  /* --------------------
-     2) Header & Nav (simple)
-     -------------------- */
-  .header{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(17,17,22,0.75);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #232334;
-  }
-  
-  .nav{
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .brand{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #f1f1f1;
-  }
-  
-  .brand__logo{
-    width: 34px; height: 34px;
-    border-radius: 8px;
-    background: linear-gradient(135deg,#566fff,#6ee7ff);
-    box-shadow: 0 4px 7px rgba(0,0,0,.35);
-  }
-  
-  .nav__links{ display:flex; align-items:center; gap: 8px; }
-  
-  .nav__link{
-    color: #bdbdcb;
-    padding: 8px 12px;
-    border-radius: 999px;
-    transition: opacity .2s, background .2s, color .2s;
-    opacity: .8;
-  }
-  
-  .nav__link:hover{ opacity: 1; background: rgba(255,255,255,.06); color: #fff; }
-  
-  .nav__cta{
-    color: #0b0b0f; background: linear-gradient(135deg,#566fff,#6ee7ff);
-    padding: 10px 14px; border-radius: 12px; font-weight: 700;
-    box-shadow: 0 4px 7px rgba(0,0,0,.35);
-  }
-  
-  /* --------------------
-     3) Hero (full-viewport like music player)
-     -------------------- */
-  #profile{
-    height: 100vh;
-    background-color: #000;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; /* set background-image in HTML style */
-  }
-  
-  .cover{ /* dark overlay */
-    background: rgba(44,44,44,0.6);
-    height: 100vh;
-  }
-  
-  .wrapper{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 0 18px;
-  }
-  
-  .details{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .avatar{
-    margin: 25px;
-    height: 220px; width: 220px;
-    border-radius: 10%;
-    overflow: hidden;
-    box-shadow: 0px 4px 7px rgb(0 0 0 / 70%);
-  }
-  
-  .avatar > img{ width: 220px; height: 220px; object-fit: cover; }
-  
-  .title{
-    font-size: clamp(28px, 6vw, 48px);
-  }
-  .subtitle{
-    margin-top: 6px;
-    font-size: 15px;
-    color: rgb(185,185,185);
-  }
-  
-  .btnrow{
-    display: flex; flex-direction: row; align-items: center; justify-content: center;
-    margin-top: 18px; gap: 10px; flex-wrap: wrap;
-  }
-  
-  .btn{
-    padding: 12px 16px; border-radius: 12px; border: 1px solid #232334;
-    background: #141423; color: #fff; font-weight: 700;
-    opacity: .85; transition: opacity .2s, transform .2s, background .2s;
-  }
-  .btn:hover{ opacity: 1; transform: translateY(-1px); background: #19192b; }
-  
-  .btn--primary{ background: linear-gradient(135deg,#566fff,#6ee7ff); color: #0b0b0f; border: 0; }
-  
-  /* --------------------
-     4) About
-     -------------------- */
-  .about{
-    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px;
-  }
-  
-  .prose{ color: #cfd5e6; line-height: 1.7; font-size: 18px; }
-  
-  .kpis{ display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-  .kpi{
-    background: #11121c; border: 1px solid #232334; border-radius: 14px; padding: 14px;
-  }
-  .kpi .val{ font-size: 28px; font-weight: 800; }
-  .kpi .label{ color: #9aa3bd; font-size: 12px; }
-  
-  /* --------------------
-     5) Projects (cards with simple hover)
-     -------------------- */
-  .projects{
-    display: grid; grid-template-columns: repeat(12,1fr); gap: 14px;
-  }
-  .card{
-    grid-column: span 4; /* override with modifiers */
-    background: #11121c; border: 1px solid #232334; border-radius: 14px;
-    overflow: hidden; box-shadow: 0 4px 7px rgba(0,0,0,.35);
-    transition: transform .25s, box-shadow .25s, border-color .25s; opacity: .96;
-  }
-  .card:hover{ transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,.35); opacity: 1; border-color: #2e3a5a; }
-  .card__media{ aspect-ratio: 16/10; background: #0d0f17; }
-  .card__body{ padding: 12px; display: grid; gap: 6px; }
-  .card__title{ font-weight: 800; }
-  .card__meta{ color: #9aa3bd; font-size: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
-  
-  .project--wide{ grid-column: span 8; }
-  .project--tall{ grid-column: span 6; }
-  .project--square{ grid-column: span 4; }
-  
-  /* --------------------
-     6) Gallery
-     -------------------- */
-  .gallery{ display: grid; grid-template-columns: repeat(6,1fr); gap: 8px; }
-  .gallery__item{ aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; border: 1px solid #232334; }
-  
-  /* --------------------
-     7) Resume / Timeline
-     -------------------- */
-  .timeline{ position: relative; display: grid; gap: 12px; }
-  .timeline::before{ content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background: linear-gradient(#566fff,#6ee7ff); }
-  .entry{ position:relative; margin-left:36px; background:#11121c; border:1px solid #232334; border-radius:12px; padding:12px 14px; }
-  .entry::before{ content:""; position:absolute; left:-26px; top:14px; width:12px; height:12px; border-radius:50%; background: linear-gradient(135deg,#566fff,#6ee7ff); box-shadow: 0 0 0 4px rgba(86,111,255,.25); }
-  .entry__title{ font-weight:800; }
-  .entry__meta{ color:#9aa3bd; font-size:12px; }
-  .entry__desc{ color:#cfd5e6; }
-  
-  /* --------------------
-     8) Contact form (simple)
-     -------------------- */
-  .form{ display:grid; gap:10px; max-width: 720px; }
-  .input, .textarea{
-    width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid #232334;
-    background: #11121c; color: #fff;
-  }
-  .textarea{ min-height: 140px; resize: vertical; }
-  .input:focus, .textarea:focus{ border-color: #2e3a5a; box-shadow: 0 0 0 4px rgba(110,231,255,.35); }
-  
-  /* --------------------
-     9) Footer
-     -------------------- */
-  .footer{ padding: 36px 0 56px; border-top: 1px solid #232334; color: #bdbdcb; }
-  .footer__grid{ display:grid; grid-template-columns: 1fr auto; gap: 10px; align-items:center; }
-  .socials{ display:flex; gap: 6px; flex-wrap: wrap; }
-  .socials a{ color:#bdbdcb; padding:8px; border-radius:10px; opacity:.8; transition: opacity .2s, background .2s; }
-  .socials a:hover{ opacity:1; background: rgba(255,255,255,.06); }
-  
-  /* --------------------
-     10) Utilities
-     -------------------- */
-  .center{ display:flex; align-items:center; justify-content:center; }
-  .text-center{ text-align:center; }
-  .muted{ color:#b9bfd3; }
-  .grid{ display:grid; gap: 14px; }
-  .flex{ display:flex; gap: 10px; }
-  
-  /* --------------------
-     11) Media Queries
-     -------------------- */
-  @media (max-width: 1024px){
-    .about{ grid-template-columns: 1fr; }
-    .projects{ grid-template-columns: repeat(12,1fr); }
-    .project--wide{ grid-column: span 12; }
-    .project--tall{ grid-column: span 6; }
-    .project--square{ grid-column: span 6; }
-    .gallery{ grid-template-columns: repeat(4,1fr); }
-  }
-  
-  @media (max-width: 640px){
-    .nav__links{ display:none; }
-    .avatar{ height: 180px; width: 180px; }
-    .kpis{ grid-template-columns: 1fr 1fr; }
-    .gallery{ grid-template-columns: repeat(2,1fr); }
-    .project--tall, .project--square{ grid-column: span 12; }
-  }
-  
+.contact-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:16px;
+  margin-top:14px;
+}
+.contact-card{
+  background: rgba(44,44,44,0.75);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px;
+  padding:16px;
+  text-align:left;
+  box-shadow:0 4px 10px rgba(0,0,0,.35);
+}
+.contact-card h3{
+  font-size:18px;
+  margin:0 0 10px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.contact-card ul{
+  list-style:none;
+  padding:0;
+  margin:0;
+  line-height:1.8;
+}
+.contact-card a{
+  color:#9cf;
+  text-decoration:none;
+  opacity:.9;
+  transition:opacity .2s;
+}
+.contact-card a:hover{
+  opacity:1;
+}
+@media (max-width: 900px){
+  .contact-grid{ grid-template-columns: 1fr; }
+}
