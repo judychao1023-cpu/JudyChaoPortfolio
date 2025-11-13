@@ -327,6 +327,14 @@
     display: none;
   }
 
+  .home-hero-overlay {
+    position: absolute; /* ← 覆蓋掉 fixed，跟 section 高度一起動 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
   /* 手機版 tabs：3 個一排，第二排置中 */
   .home-tabs {
     display: grid;
@@ -520,8 +528,8 @@
   /* 簽名像畫作角落一樣貼右下 */
   .footer .container {
     max-width: none;
-    margin: 10;
-    padding: 1;
+    margin: 0;
+    padding: 0;
   }
   
   .signature {
