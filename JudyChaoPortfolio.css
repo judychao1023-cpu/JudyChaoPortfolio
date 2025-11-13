@@ -469,64 +469,66 @@
     color: #777f8f;
   }
 /* ===============================
-   Gallery – Perfect Square Thumbnails
+   Gallery – Square Thumbnails (crop, fill horizontally)
    =============================== */
 
    .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 你可以改 140–200 px */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 想大一點可以改 160 或 180 */
     gap: 12px;
+    margin-top: 14px;
   }
   
   .gallery__item {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;        /* ⭐ 正方形的關鍵 */
+    aspect-ratio: 1 / 1;          /* ⭐ 正方形縮圖 */
     border-radius: 12px;
     overflow: hidden;
-    background: var(--eggshell); /* 淺色背景，不要黑底 */
+    background: var(--eggshell);  /* 很淡的底色 */
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  /* 圖片：完整顯示＋等比例縮小（contain） */
+  /* 圖片：填滿整個正方形，必要時上下裁切 */
   .gallery__item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;        /* ⭐ 不裁切，整張秀出來 */
-    padding: 8px;               /* ⭐ 保留縮圖邊界，美觀 */
+    object-fit: cover;            /* ⭐ 核心：裁切成正方形、橫向填滿 */
+    display: block;
   }
   
-  /* 淺色半透明 overlay */
+  /* 透淺色 overlay（罩在圖片上） */
   .gallery__item::before {
     content: "";
     position: absolute;
     inset: 0;
     background: var(--eggshell);
-    opacity: 0.45;              /* 可調整 0.3–0.6 */
+    opacity: 0.38;                /* 可以自己調透明度 0.3–0.6 */
     pointer-events: none;
   }
   
-  /* 深色 alt 文字置中 */
+  /* 深色文字（從 data-alt 讀），顯示在 overlay 上 */
   .gallery__item::after {
-    content: attr(data-alt);
+    content: attr(data-alt);      /* ⭐ 用 data-alt 當顯示文字 */
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 8px 10px;
+    text-align: center;
     font-size: 13px;
     font-weight: 600;
-    color: var(--navy);
-    text-align: center;
+    color: var(--navy);           /* 深色字 */
     pointer-events: none;
   }
   
-  /* Hover 效果 */
+  /* Hover 效果：overlay 變淡、字變金色 */
   .gallery__item:hover::before {
-    opacity: 0.25;
+    opacity: 0.22;
   }
   
   .gallery__item:hover::after {
