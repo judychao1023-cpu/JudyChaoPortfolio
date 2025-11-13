@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Gallery</title>
+  <meta name="description" content="Gallery — Judy Chao (趙子寧)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    body{ padding-top:60px; }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+      <nav class="nav__links" aria-label="主導覽">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="projects.html">Projects</a>
+        <a class="nav__link is-active" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="resume.html">Resume</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Gallery</h2>
+        <div class="gallery" style="margin-top:14px;">
+          <figure class="gallery__item reveal"><img src="images/g1.jpg" alt="Gallery image 1" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g2.jpg" alt="Gallery image 2" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g3.jpg" alt="Gallery image 3" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g4.jpg" alt="Gallery image 4" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g5.jpg" alt="Gallery image 5" /></figure>
+          <figure class="gallery__item reveal"><img src="images/g6.jpg" alt="Gallery image 6" /></figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Judy Chao · All rights reserved</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script src="JudyChaoPortfolio.js" defer></script>
+</body>
+</html>

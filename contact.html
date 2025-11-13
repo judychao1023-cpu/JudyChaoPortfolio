@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Contact</title>
+  <meta name="description" content="Contact — Judy Chao (趙子寧)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    body{ padding-top:60px; }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+    /* Contact three-card layout */
+    .contact-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:14px; }
+    .contact-card{ background: rgba(44,44,44,0.75); border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:16px; text-align:left; box-shadow:0 4px 10px rgba(0,0,0,.35); }
+    .contact-card h3{ font-size:18px; margin:0 0 10px 0; display:flex; align-items:center; gap:8px; }
+    .contact-card ul{ list-style:none; padding:0; margin:0; line-height:1.8; }
+    .contact-card a{ color:#9cf; text-decoration:none; opacity:.9; transition:opacity .2s; }
+    .contact-card a:hover{ opacity:1; }
+    @media (max-width: 900px){ .contact-grid{ grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+      <nav class="nav__links" aria-label="主導覽">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="projects.html">Projects</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="resume.html">Resume</a>
+        <a class="nav__link is-active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>📱 Phones</h3>
+            <ul>
+              <li>USA: <a href="tel:+16142660320">+1 614-266-0320</a></li>
+              <li>Taiwan: <a href="tel:+886905978531">+886 905-978-531</a></li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <h3>✉️ Emails</h3>
+            <ul>
+              <li>Personal: <a href="mailto:judychao1023@gmail.com">judychao1023@gmail.com</a></li>
+              <li>School: <a href="mailto:chao.259@buckeyemail.osu.edu">chao.259@buckeyemail.osu.edu</a></li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <h3>💼 Socials</h3>
+            <ul>
+              <li>LinkedIn: <a href="https://www.linkedin.com/in/judy-chao-1a6a49330" target="_blank" rel="noopener">Judy Chao</a></li>
+              <!-- More socials later -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Judy Chao · All rights reserved</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script src="JudyChaoPortfolio.js" defer></script>
+</body>
+</html>

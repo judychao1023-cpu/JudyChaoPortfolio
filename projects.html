@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Projects</title>
+  <meta name="description" content="Projects — Judy Chao (趙子寧)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    body{ padding-top:60px; }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+      <nav class="nav__links" aria-label="主導覽">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link is-active" href="projects.html">Projects</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="resume.html">Resume</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="projects" style="margin-top:14px;">
+          <article class="project-card reveal">
+            <img src="images/project-1.jpg" alt="Project cover 1" />
+            <h3>Campus Feature Photo Story</h3>
+            <p class="muted">Photojournalism · 2025</p>
+          </article>
+          <article class="project-card reveal">
+            <img src="images/project-2.jpg" alt="Project cover 2" />
+            <h3>Operations & Lean Mini‑Case</h3>
+            <p class="muted">Coursework · BUSOBA 3130</p>
+          </article>
+          <article class="project-card reveal">
+            <img src="images/project-3.jpg" alt="Project cover 3" />
+            <h3>COMM 2367 Persuasive PSA</h3>
+            <p class="muted">Health Communication · 2025</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Judy Chao · All rights reserved</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script src="JudyChaoPortfolio.js" defer></script>
+</body>
+</html>

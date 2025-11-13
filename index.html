@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Home</title>
+  <meta name="description" content="Judy Chao (趙子寧) — Portfolio Home" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    body{ padding-top:60px; }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+    .backtotop{ position:fixed; right:16px; bottom:16px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.2); background:rgba(44,44,44,.75); color:#fff; display:none; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,.4); opacity:.85; transition:opacity .2s, transform .2s; }
+    .backtotop:hover{ opacity:1; transform:translateY(-2px); }
+    .backtotop.show{ display:flex; }
+    .backtotop svg{ width:18px; height:18px; }
+    .avatar > img{ object-fit: cover; opacity:0; transition:opacity .4s ease; }
+    .avatar > img.is-ready{ opacity:1; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+      <nav class="nav__links" aria-label="主導覽">
+        <a class="nav__link is-active" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="projects.html">Projects</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="resume.html">Resume</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <button id="backToTop" class="backtotop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <main>
+    <section id="profile" data-bg="images/hero-bg.jpg" role="banner">
+      <div class="cover">
+        <div class="wrapper">
+          <div class="details">
+            <div class="avatar">
+              <img src="judy2.jpg" alt="Judy Chao portrait" />
+            </div>
+            <h1 class="name">Judy Chao · 趙子寧</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Judy Chao · All rights reserved</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script src="JudyChaoPortfolio.js" defer></script>
+  <script>
+    (function(){
+      var img=document.querySelector('.avatar img');
+      if(img){ var ready=function(){ img.classList.add('is-ready'); img.style.opacity='1'; }; if(img.complete){ ready(); } img.addEventListener('load', ready); }
+      var btn=document.getElementById('backToTop'); if(btn){ var showAt=200; function onScroll(){ if(window.scrollY>showAt){ btn.classList.add('show'); } else { btn.classList.remove('show'); } } window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); btn.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); }); }
+    })();
+  </script>
+</body>
+</html>

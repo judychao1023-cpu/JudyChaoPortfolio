@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Judy Chao · Resume</title>
+  <meta name="description" content="Resume — Judy Chao (趙子寧)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+  <style>
+    body{ padding-top:60px; }
+    .header{ position:fixed; top:0; left:0; right:0; z-index:1000; }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+      <nav class="nav__links" aria-label="主導覽">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="projects.html">Projects</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link is-active" href="resume.html">Resume</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Resume</h2>
+        <div class="projects" style="justify-content:center; margin-top:14px;">
+          <a class="btn" href="趙子寧2025履歷英.pdf" target="_blank" rel="noopener">Open Resume (EN)</a>
+          <a class="btn" href="趙子寧2025履歷中.pdf" target="_blank" rel="noopener">開啟履歷（中）</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> Judy Chao · All rights reserved</div>
+  </footer>
+
+  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script src="JudyChaoPortfolio.js" defer></script>
+</body>
+</html>
