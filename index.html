@@ -12,9 +12,9 @@
 </head>
 <body>
 
-  <!-- ✅ Home 不要 header、不要左上名字與 icon -->
+  <!-- Home 不要 header，只保留內容 -->
 
-  <!-- Back to top（可留可砍，先留著） -->
+  <!-- 可留可刪的回到頂部按鈕 -->
   <button id="backToTop" class="backtotop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -22,20 +22,14 @@
   </button>
 
   <main class="home-main">
-
-    <!-- 全螢幕背景 hero -->
+    <!-- 🔹 背景圖 hero，注意檔名要跟你的圖片一致 -->
     <section class="home-hero" style="background-image: url('000035500019拷貝2.jpg');">
-  
-      <!-- 透明黑 overlay -->
       <div class="home-hero-overlay">
-  
-        <!-- 內容置中 -->
         <div class="home-hero-content">
-          <h1>Portfolio of Judy Chao · 趙子寧</h1>
-          <p>Welcome — explore my work in communication, media, photography, and business.</p>
-  
-          <!-- 標籤列 -->
-          <nav class="home-tabs">
+          <h1>Welcome</h1>
+          <p>Portfolio of Judy Chao · 趙子寧</p>
+
+          <nav class="home-tabs" aria-label="主要選單">
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
             <a href="gallery.html">Gallery</a>
@@ -43,12 +37,19 @@
             <a href="contact.html">Contact</a>
           </nav>
         </div>
-  
       </div>
     </section>
-  
   </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="signature">
+        <!-- 之後你想放的小簽名寫這裡 -->
+      </div>
+    </div>
+  </footer>
 
   <script src="JudyChaoPortfolio.js" defer></script>
 </body>
+
 </html>
