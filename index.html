@@ -11,45 +11,32 @@
   <link rel="stylesheet" href="JudyChaoPortfolio.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <span class="brand__logo" aria-hidden="true"></span>
-        <strong>Judy Chao</strong>
-      </a>
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
+  <!-- ✅ Home 不要 header、不要左上名字與 icon -->
 
-      <nav class="nav__links" aria-label="主導覽">
-        <a class="nav__link is-active" href="index.html">Home</a>
-        <a class="nav__link" href="about.html">About</a>
-        <a class="nav__link" href="projects.html">Projects</a>
-        <a class="nav__link" href="gallery.html">Gallery</a>
-        <a class="nav__link" href="resume.html">Resume</a>
-        <a class="nav__link" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Back to top -->
+  <!-- Back to top（可留可砍，先留著） -->
   <button id="backToTop" class="backtotop" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
-  <main>
-    <section id="profile" class="hero hero--welcome" data-bg="000035500019拷貝2.jpg" role="banner">
-      <div class="hero__overlay">
-        <div class="hero__content">
-          <h1>Welcome</h1>
-          <p>Portfolio of Judy Chao · 趙子寧</p>
-        </div>
-      </div>
+  <main class="home-main">
+    <!-- 不裁切的照片：整張圖片將隨頁面正常滾動 -->
+    <img src="000035500019拷貝2.jpg" alt="Judy photo" class="home-hero-img">
+
+    <!-- 下面是文字＋標籤列 -->
+    <section class="home-intro">
+      <h1>Portfolio of Judy Chao · 趙子寧</h1>
+      <p>Welcome — explore my work in communication, media, photography, and business.</p>
+
+      <nav class="home-tabs" aria-label="主要選單">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </section>
   </main>
 
