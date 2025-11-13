@@ -468,59 +468,65 @@
     font-size: 13px;
     color: #777f8f;
   }
-  
 /* ===============================
-   Gallery Thumbnail With Overlay
+   Gallery – Perfect Square Thumbnails
    =============================== */
 
-   .gallery__item {
+   .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* 你可以改 140–200 px */
+    gap: 12px;
+  }
+  
+  .gallery__item {
     position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;        /* ⭐ 正方形的關鍵 */
     border-radius: 12px;
     overflow: hidden;
-    background: transparent;       /* 不要黑底 */
-    padding: 0;
+    background: var(--eggshell); /* 淺色背景，不要黑底 */
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  /* 縮圖：等比例、不裁切 */
+  /* 圖片：完整顯示＋等比例縮小（contain） */
   .gallery__item img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
+    height: 100%;
+    object-fit: contain;        /* ⭐ 不裁切，整張秀出來 */
+    padding: 8px;               /* ⭐ 保留縮圖邊界，美觀 */
   }
   
-  /* 透淺色 overlay（使用你的 eggshell） */
+  /* 淺色半透明 overlay */
   .gallery__item::before {
     content: "";
     position: absolute;
     inset: 0;
     background: var(--eggshell);
-    opacity: 0.55;                 /* ⭐ 透明度可調，0.45～0.6 都很好看 */
-    pointer-events: none;          /* 保留可點擊 */
+    opacity: 0.45;              /* 可調整 0.3–0.6 */
+    pointer-events: none;
   }
   
-  /* alt 文字作為 caption */
+  /* 深色 alt 文字置中 */
   .gallery__item::after {
-    content: attr(data-alt);       /* ⭐ 從 data-alt 讀 */
+    content: attr(data-alt);
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
-    text-align: center;
+    padding: 10px;
     font-size: 13px;
-    font-weight: 500;
-    color: var(--navy);             /* 深色文字 */
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
     pointer-events: none;
   }
   
-  /* hover：overlay 更淡、文字更亮 */
+  /* Hover 效果 */
   .gallery__item:hover::before {
-    opacity: 0.35;
+    opacity: 0.25;
   }
   
   .gallery__item:hover::after {
