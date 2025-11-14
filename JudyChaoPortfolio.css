@@ -436,13 +436,15 @@
   /* ===============================
      Projects
      =============================== */
-  .projects {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 14px;
-  }
-  
+     .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 14px;
+      justify-content: center;   /* ⭐⭐ 新增：置中卡片們 ⭐⭐ */
+      align-items: flex-start; /* 避免高度被強制對齊，可選 */
+    }
+    
   .project-card {
     flex: 1 1 260px;     /* ⭐ 建議 240–300px，看你喜歡 */
     max-width: 300px;    /* ⭐ 不要超寬！關鍵！ */
