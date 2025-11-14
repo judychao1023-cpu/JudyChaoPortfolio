@@ -555,6 +555,15 @@
 .news-card:hover .news-card__overlay {
   opacity: 1;
 }
+/* Subtext for Published / Archived sections */
+.section-subtext {
+  font-size: 14px;
+  color: #6b7180;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  line-height: 1.55;
+  max-width: 720px;
+}
 
 /* Archive 的 caption 放底部小小一條 */
 .archive-card figcaption {
