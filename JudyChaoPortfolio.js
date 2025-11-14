@@ -67,7 +67,7 @@
       const btn = qs('#backToTop');
       if (!btn) return;
   
-      const showAt = 200;
+      const showAt = 100;
       const onScroll = () => {
         if (window.scrollY > showAt) btn.classList.add('show');
         else btn.classList.remove('show');
