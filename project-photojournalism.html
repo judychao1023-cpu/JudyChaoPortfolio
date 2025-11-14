@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photojournalism Internship · Projects · Judy Chao</title>
+  <meta name="description" content="Photojournalism internship projects — Judy Chao (趙子寧)" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="JudyChaoPortfolio.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <strong>Judy Chao</strong>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+      <nav class="nav__links" aria-label="主導覽">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link is-active" href="projects.html">Projects</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="resume.html">Experience</a>
+        <a class="nav__link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <button id="backToTop" class="backtotop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Photojournalism Internship</h2>
+        <p class="prose" style="margin-top:8px;">
+          2025 夏季於中國時報攝影中心實習，負責採訪現場攝影、活動紀錄與圖片編選，
+          包含展覽、記者會、街訪與大型活動等不同主題。以下整理部分已刊登於新聞的照片與連結，
+          以及尚未使用、但已建檔於報社資料庫的作品。
+        </p>
+
+        <!-- 已發新聞區 -->
+        <h3 style="margin-top:32px; font-size:18px;">Published news assignments</h3>
+        <div class="project-detail-grid" style="margin-top:14px;">
+          <!-- 一個新聞一張縮圖＋資訊 -->
+          <article class="project-detail-card">
+            <a href="https://example.com/news-1" target="_blank" class="project-detail-thumb" rel="noopener">
+              <img src="images/intern-news-1.jpg" alt="Press conference at Taipei City Hall">
+            </a>
+            <div class="project-detail-body">
+              <h4>台北市府記者會現場</h4>
+              <p class="project-detail-meta">China Times · 2025-07-30 · Press Conference</p>
+              <p class="project-detail-desc">
+                實習期間首次單獨負責的記者會攝影，包含主視覺、講者特寫與觀眾互動畫面。
+              </p>
+              <a href="https://example.com/news-1" target="_blank" rel="noopener" class="project-detail-link">
+                View article ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- 再複製多幾個 article，換圖＋連結＋文字即可 -->
+          <article class="project-detail-card">
+            <a href="https://example.com/news-2" target="_blank" class="project-detail-thumb" rel="noopener">
+              <img src="images/intern-news-2.jpg" alt="Tech expo event coverage">
+            </a>
+            <div class="project-detail-body">
+              <h4>資訊安全展活動紀錄</h4>
+              <p class="project-detail-meta">China Times · 2025-08-02 · Event coverage</p>
+              <p class="project-detail-desc">
+                負責展場全景、攤位互動與講座現場，部分照片刊登於紙本與數位版。
+              </p>
+              <a href="https://example.com/news-2" target="_blank" rel="noopener" class="project-detail-link">
+                View article ↗
+              </a>
+            </div>
+          </article>
+
+          <!-- ... 你可以照這個格式貼 15 個 -->
+        </div>
+
+        <!-- 未刊登、已建檔區 -->
+        <h3 style="margin-top:40px; font-size:18px;">Archived assignments (unpublished)</h3>
+        <p class="prose" style="margin-top:6px;">
+          以下照片拍攝於實習期間部分活動，最終未被採用於當日新聞版面，
+          但皆已上傳並建檔於報社內部資料庫。未來若被編輯選用，通常僅以資料庫形式呈現，
+          不會個別署名。
+        </p>
+
+        <div class="project-archive-grid" style="margin-top:16px;">
+          <figure class="project-archive-item">
+            <img src="images/intern-archive-1.jpg" alt="Crowd at outdoor summer event">
+            <figcaption>戶外夏日活動現場，記錄觀眾互動與整體氛圍。</figcaption>
+          </figure>
+
+          <figure class="project-archive-item">
+            <img src="images/intern-archive-2.jpg" alt="Exhibition hall wide shot">
+            <figcaption>展覽場館廣角畫面，作為日後主題報導的資料庫素材。</figcaption>
+          </figure>
+
+          <!-- 再貼更多 figure 就好 -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="signature">
+        <!-- 簽名 -->
+      </div>
+    </div>
+  </footer>
+
+  <script src="JudyChaoPortfolio.js" defer></script>
+</body>
+</html>

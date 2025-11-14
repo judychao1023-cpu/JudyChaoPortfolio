@@ -475,6 +475,117 @@
     text-decoration: none;
   }
   
+  /* ===============================
+   Project Detail Page
+   =============================== */
+
+.project-detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-detail-card {
+  display: flex;
+  gap: 14px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid var(--grey);
+  padding: 10px 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.project-detail-thumb {
+  flex: 0 0 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+}
+
+.project-detail-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-detail-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-detail-body h4 {
+  font-size: 16px;
+}
+
+.project-detail-meta {
+  font-size: 12px;
+  color: #7a8190;
+}
+
+.project-detail-desc {
+  font-size: 14px;
+  color: #4a5262;
+}
+
+.project-detail-link {
+  margin-top: 6px;
+  font-size: 13px;
+  align-self: flex-start;
+  color: var(--navy);
+  border-bottom: 1px solid rgba(211,172,43,0.5);
+  text-decoration: none;
+  padding-bottom: 1px;
+}
+
+.project-detail-link:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* 未刊登區塊 */
+.project-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.project-archive-item {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--grey);
+  padding: 8px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.project-archive-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.project-archive-item figcaption {
+  font-size: 12px;
+  color: #4a5262;
+}
+
+/* RWD */
+@media (max-width: 700px) {
+  .project-detail-card {
+    flex-direction: column;
+  }
+
+  .project-detail-thumb {
+    flex-basis: auto;
+    width: 100%;
+    max-height: 220px;
+  }
+}
+
 /* ===============================
    Gallery – Square Thumbnails (crop, fill horizontally)
    =============================== */
