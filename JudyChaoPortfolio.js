@@ -170,7 +170,7 @@
       setupNavToggle();
       initAvatar();
       setupBackToTop();
-      setupLightbox();
+      
       setupReveal();
       setupHeaderShrink();
     }
