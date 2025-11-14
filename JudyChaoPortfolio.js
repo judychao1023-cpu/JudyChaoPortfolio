@@ -81,39 +81,7 @@
       });
     }
   
-    /* ---------- Lightbox (Projects + Gallery) ---------- */
-    function setupLightbox() {
-      const imgs = [
-        ...qsa('.project-card img')
-      ];
-      if (!imgs.length || !('HTMLDialogElement' in window)) return;
-  
-      const dlg = document.createElement('dialog');
-      dlg.setAttribute('aria-label', 'Image preview');
-      dlg.style.padding = '0';
-      dlg.style.border = 'none';
-      dlg.style.background = 'transparent';
-      dlg.innerHTML = `
-        <div style="position:fixed; inset:0; background:rgba(0,0,0,.8); display:flex; align-items:center; justify-content:center;">
-          <img id="_lb_img" alt="preview" style="max-width:92vw; max-height:86vh; border-radius:10px; box-shadow:0 10px 28px rgba(0,0,0,.6)" />
-        </div>`;
-      document.body.appendChild(dlg);
-  
-      const imgEl = qs('#_lb_img', dlg);
-  
-      imgs.forEach(img => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => {
-          imgEl.src = img.currentSrc || img.src;
-          if (!dlg.open) dlg.showModal();
-        });
-      });
-  
-      dlg.addEventListener('click', () => dlg.close());
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && dlg.open) dlg.close();
-      });
-    }
+   
   
     /* ---------- Scroll Reveal (reveal class) ---------- */
     function setupReveal() {
