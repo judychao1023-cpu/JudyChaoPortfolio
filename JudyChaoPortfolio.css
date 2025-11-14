@@ -18,7 +18,6 @@
     height: 100%;
   }
   
-  
   /* ======================================================
    Global Font Setup
    ====================================================== */
@@ -57,6 +56,23 @@ body {
   /* Signature font for main name/title */
 .signature-title,
 h1.signature-title {
+  font-family: "Momo Signature", cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.5px;
+}
+
+/* Title using main serif font */
+.portfolio-title {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 0.3px;
+  color: var(--navy);
+}
+
+/* Name using Momo Signature (你已經有這段但我放一次完整) */
+.signature-title {
   font-family: "Momo Signature", cursive;
   font-weight: 400;
   font-style: normal;
@@ -164,7 +180,27 @@ h1.signature-title {
     .brand__logo {
       display: none;   /* 已經不要小圖示 */
     }
-  
+  /*home/
+  /* Home icon style */
+.brand.home-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--eggshell);
+  font-size: 0; /* 隱藏空白字體避免 padding */
+}
+
+.brand.home-icon .material-symbols-outlined {
+  font-size: 24px;
+  line-height: 1;
+  color: var(--eggshell);
+}
+
+/* hover 效果 */
+.brand.home-icon:hover .material-symbols-outlined {
+  color: var(--gold);
+}
+
   /* 漢堡按鈕 */
   .nav-toggle {
     display: inline-flex;
@@ -300,6 +336,8 @@ h1.signature-title {
   .home-hero {
     position: relative;
     width: 100%;
+   
+
   }
   
   /* 照片：橫向填滿，高度自動 → 不裁切 */
@@ -335,6 +373,10 @@ h1.signature-title {
   max-width: 720px;
   margin: 0 auto;
   pointer-events: auto; /* ← 允許點擊 */
+}
+/* Spacing between homepage title and tabs */
+.home-hero-content .portfolio-title {
+  margin-bottom: 26px; /* 想更開可以改 30–36px */
 }
 
 .home-hero-content h1 {
