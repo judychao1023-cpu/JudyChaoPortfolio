@@ -154,7 +154,7 @@
    Gallery Lightbox
    =============================== */
 
-const figures = document.querySelectorAll(".gallery__item");
+const figures = document.querySelectorAll(".gallery__item, .archive-card");
 let lightboxIndex = 0;
 let lightboxImages = [];
 
