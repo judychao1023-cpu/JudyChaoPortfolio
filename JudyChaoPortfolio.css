@@ -455,8 +455,12 @@
   
   
   .project-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
+    display: block;
   }
   
   .project-card h3 {
