@@ -456,12 +456,11 @@
   
   
   .project-card img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
+    width: 100%;
+    height: 200px;       /* 若覺得太高可改 180 or 170 */
+    object-fit: cover;
     border-radius: 10px;
     margin-bottom: 10px;
-    
   }
   
   .project-card h3 {
