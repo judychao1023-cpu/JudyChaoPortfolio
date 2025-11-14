@@ -19,11 +19,58 @@
   }
   
   body {
-    font-family: 'Varela Round', sans-serif;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
     background: var(--eggshell);   /* 淺色底 */
     color: var(--navy);
     line-height: 1.6;
   }
+
+  /* ======================================================
+   Global Font Setup
+   ====================================================== */
+
+/* 全站主要字體：Libre Baskerville */
+body {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--navy);
+}
+
+/* 名字專用手寫字體 */
+.signature-title {
+  font-family: "Momo Signature", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 粗體 */
+.bold {
+  font-weight: 700;
+}
+
+/* 斜體 */
+.italic {
+  font-style: italic;
+}
+
+/* 如果你想在某些小標套用 EB Garamond（選配） */
+.eb {
+  font-family: "EB Garamond", serif;
+  font-weight: 400;
+}
+
+  /* Signature font for main name/title */
+.signature-title,
+h1.signature-title {
+  font-family: "Momo Signature", cursive;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.5px;
+}
+
   .timeline-list {
     margin: 0;
     padding-left: 18px;
