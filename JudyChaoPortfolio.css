@@ -466,7 +466,7 @@ h1.signature-title {
 .avatar {
   margin: 24px auto;
   display: inline-block;         /* 讓容器跟著圖片大小跑 */
-  border-radius: 16px;           /* 圓角效果保留 */
+  border-radius: 12px;           /* 圓角效果保留 */
   overflow: hidden;
   background: #111;
   box-shadow: 0 4px 12px rgba(0,0,0,0.7);
@@ -803,6 +803,13 @@ h1.signature-title {
   /* ===============================
    Experience Timeline
    =============================== */
+
+.timeline-link:hover .timeline-title {
+    color: var(--gold);
+    transition: 0.3s ease
+}
+  
+  
 .timeline {
   position: relative;
   margin-top: 20px;
