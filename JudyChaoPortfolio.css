@@ -733,7 +733,18 @@ h1.signature-title {
   .gallery__item:hover::after {
     color: var( --eggshell);
   }
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: repeat(1, 1fr);  /* 手機 2 欄 */
+      gap: 10px;                               /* 間距可以稍微小一點 */
+      margin-top: 12px;
+    }
   
+    .gallery__item::after {
+      font-size: 14px;   /* 手機上 alt 文字小一點，不會壓太滿 */
+      padding: 4px 6px;
+    }
+  }
 
   /* ===============================
    Lightbox Popup
