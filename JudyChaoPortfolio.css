@@ -527,6 +527,7 @@ h1.signature-title {
     border: 1px solid var(--grey);
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     color: var(--navy);
+
   }
   
   
@@ -553,14 +554,24 @@ h1.signature-title {
     color: inherit;
     text-decoration: none;
   }
-  
-  /* ===============================
-   Project Detail Page
-   =============================== */
+  /* Project card hover — 整張變色 */
+.project-card:hover h3,
+.project-card:hover .muted {
+  color: var(--gold);  /* 或你想要的顏色 */
+  transition: color .2s ease;
+}
 
-/* ===============================
-   News / Archive Square Grid
-   =============================== */
+/* 如果想讓整張卡片微亮 */
+.project-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+
+
+/*News / Archive Square Grid*/
 
 /* 兩個 grid 都是多欄方塊 */
 .news-grid,
@@ -579,7 +590,6 @@ h1.signature-title {
   aspect-ratio: 1 / 1;           /* ⭐ 固定正方形 */
   overflow: hidden;
   background: #111;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 }
 
 /* 圖片本身：填滿方形、必要時裁切 */
