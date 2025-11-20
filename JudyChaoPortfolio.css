@@ -1,6 +1,4 @@
-/* ===============================
-   Reset & Base
-   =============================== */
+/*Reset & Base */
    :root {
     --navy: #333D51;
     --gold: #D3AC2B;
@@ -18,9 +16,7 @@
     height: 100%;
   }
   
-  /* ======================================================
-   Global Font Setup
-   ====================================================== */
+  /* Global Font Setup */
 
 /* 全站主要字體：Libre Baskerville */
 body {
@@ -101,9 +97,7 @@ h1.signature-title {
     color: inherit;
   }
   
-  /* ===============================
-     Layout Helpers
-     =============================== */
+  /* Layout Helpers */
   .container {
     max-width: 1040px;
     margin: 0 auto;
@@ -146,9 +140,7 @@ h1.signature-title {
     color: #777f8f;
   }
   
-  /* ===============================
-     Header / Nav（About 等頁面）
-     =============================== */
+  /* Header / Nav（About 等頁面） */
      .header {
       position: fixed;
       top: 0;
@@ -671,7 +663,7 @@ h1.signature-title {
 
    .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 想大一點可以改 160 或 180 */
+    grid-template-columns: repeat(3, 1fr); /* ⭐ 固定 3 欄 */
     gap: 12px;
     margin-top: 14px;
   }
