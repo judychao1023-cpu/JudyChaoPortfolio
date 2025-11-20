@@ -735,7 +735,7 @@ h1.signature-title {
   }
   @media (max-width: 600px) {
     .gallery {
-      grid-template-columns: repeat(1, 1fr);  /* 手機 2 欄 */
+      grid-template-columns: repeat(2, 1fr);  /* 手機 2 欄 */
       gap: 10px;                               /* 間距可以稍微小一點 */
       margin-top: 12px;
     }
